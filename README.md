@@ -48,3 +48,17 @@ npm install Seagullie/schedule-server-api-client
 ```
 npx openapi-generator-cli generate -i path/to/swagger.json -g typescript-axios -o ./api-client-axios
 ```
+
+## Посилання
+
+OpenApi Generator
+
+[https://github.com/OpenAPITools/openapi-generator]()
+
+OpenApi
+
+[https://www.openapis.org/what-is-openapi]()
+
+react-native-url-polyfill
+
+[https://github.com/charpeni/react-native-url-polyfill]()
