@@ -29,6 +29,10 @@
 
 1. /api/Teacher
 
+## Середовища
+
+Клієнт протестовано у браузері та в мобільному застосунку, написаному на React Native. React Native потребує встановлення окремої бібліотеки задля належної обробки URL об'єктів, [react-native-url-polyfill](https://www.npmjs.com/package/react-native-url-polyfill).
+
 ## Пакунок
 
 Встановлюється у веб проджект:
