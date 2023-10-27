@@ -1,6 +1,6 @@
 # Клієнт для API зі розкладами
 
-Цей клієнт дозволяє працювати із API на [сервері зі розкладами.](<[https://github.com/bind-w-exit/InteractiveScheduleUad.]()>)
+Цей клієнт дозволяє працювати із API на [сервері зі розкладами.](https://github.com/bind-w-exit/InteractiveScheduleUad).
 
 Клієнт автозгенеровано [цією Java програмою](https://github.com/OpenAPITools/openapi-generator) за допомогою [цієї node обгортки](https://www.npmjs.com/package/@openapitools/openapi-generator-cli).
 
@@ -21,7 +21,7 @@
 
 ## Тести
 
-Щоб запустити тести, необхідно заповнити `.env `згідно зі `.env.example`
+Щоб запустити тести, необхідно заповнити `.env` згідно зі `.env.example`
 
 Всього ендпойнтів: ~10
 
