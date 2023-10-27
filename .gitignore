@@ -6,3 +6,5 @@ typings
 # secrets
 .env
 
+package-lock.json
+tsconfig.tsbuildinfo
