@@ -1,6 +1,6 @@
 # Клієнт для API зі розкладами
 
-Цей клієнт дозволяє працювати із API на [сервері зі розкладами.](https://github.com/bind-w-exit/InteractiveScheduleUad).
+Цей клієнт дозволяє працювати із API на [сервері зі розкладами](https://github.com/bind-w-exit/InteractiveScheduleUad).
 
 Клієнт автозгенеровано [цією Java програмою](https://github.com/OpenAPITools/openapi-generator) за допомогою [цієї node обгортки](https://www.npmjs.com/package/@openapitools/openapi-generator-cli).
 
@@ -35,4 +35,12 @@
 
 ```
 npm install Seagullie/schedule-server-api-client
+```
+
+## Генерація
+
+Щоб згенерувати клієнт, було використано цю команду:
+
+```
+npx openapi-generator-cli generate -i path/to/swagger.json -g typescript-axios -o ./api-client-axios
 ```
