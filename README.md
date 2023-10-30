@@ -35,7 +35,13 @@
 
 ## Пакунок
 
-Встановлюється у веб проджект:
+Задля того, щоб клієнт встановлювався у інші проекти, його було перетворено у пакунок наступним чином:
+
+- Складено `index `файл – окремий файл, що експортує лише окремі складові клієнта, необхідні для його використання в інших проектах.
+- У `package.json` додано поля `main` та `exports`. Вони вказують на `index `файл.
+- Скомпільовано первинний код. Результат розміщено в директорії `dist`
+
+Встановлюється клієнт у веб проджект цією командою:
 
 ```
 npm install Seagullie/schedule-server-api-client
@@ -62,3 +68,15 @@ OpenApi
 react-native-url-polyfill
 
 [https://github.com/charpeni/react-native-url-polyfill]()
+
+Пакунки. Точки входу
+
+[https://nodejs.org/api/packages.html#package-entry-points]()
+
+Поле `exports` у `package.json`
+
+[https://webpack.js.org/guides/package-exports/](https://webpack.js.org/guides/package-exports/)
+
+Поле `main` у `package.json`
+
+[https://nodejs.org/api/packages.html#main]()
