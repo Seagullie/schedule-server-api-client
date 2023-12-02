@@ -26,105 +26,6 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
 /**
  * 
  * @export
- * @interface Article
- */
-export interface Article {
-    /**
-     * 
-     * @type {number}
-     * @memberof Article
-     */
-    'id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    'title': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    'body': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Article
-     */
-    'published'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Article
-     */
-    'authorId'?: number;
-    /**
-     * 
-     * @type {Author}
-     * @memberof Article
-     */
-    'author'?: Author;
-}
-/**
- * 
- * @export
- * @interface ArticleForReadDto
- */
-export interface ArticleForReadDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof ArticleForReadDto
-     */
-    'id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ArticleForReadDto
-     */
-    'title'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ArticleForReadDto
-     */
-    'published'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ArticleForReadDto
-     */
-    'authorId'?: number;
-}
-/**
- * 
- * @export
- * @interface ArticleForWriteDto
- */
-export interface ArticleForWriteDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof ArticleForWriteDto
-     */
-    'title': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ArticleForWriteDto
-     */
-    'body': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ArticleForWriteDto
-     */
-    'authorId'?: number;
-}
-/**
- * 
- * @export
  * @interface AuthenticatedResponse
  */
 export interface AuthenticatedResponse {
@@ -144,123 +45,6 @@ export interface AuthenticatedResponse {
 /**
  * 
  * @export
- * @interface Author
- */
-export interface Author {
-    /**
-     * 
-     * @type {number}
-     * @memberof Author
-     */
-    'id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Author
-     */
-    'firstName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Author
-     */
-    'lastName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Author
-     */
-    'nickName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Author
-     */
-    'email'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Author
-     */
-    'bio'?: string | null;
-}
-/**
- * 
- * @export
- * @interface AuthorForReadDto
- */
-export interface AuthorForReadDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof AuthorForReadDto
-     */
-    'id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorForReadDto
-     */
-    'firstName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorForReadDto
-     */
-    'lastName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorForReadDto
-     */
-    'nickName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorForReadDto
-     */
-    'email'?: string | null;
-}
-/**
- * 
- * @export
- * @interface AuthorForWriteDto
- */
-export interface AuthorForWriteDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorForWriteDto
-     */
-    'firstName': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorForWriteDto
-     */
-    'lastName': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorForWriteDto
-     */
-    'nickName': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorForWriteDto
-     */
-    'email': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorForWriteDto
-     */
-    'bio': string;
-}
-/**
- * 
- * @export
  * @enum {string}
  */
 
@@ -271,6 +55,25 @@ export const ClassType = {
 } as const;
 
 export type ClassType = typeof ClassType[keyof typeof ClassType];
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const DayOfWeek = {
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5,
+    NUMBER_6: 6
+} as const;
+
+export type DayOfWeek = typeof DayOfWeek[keyof typeof DayOfWeek];
 
 
 /**
@@ -307,28 +110,135 @@ export interface Department {
 /**
  * 
  * @export
- * @interface DepartmentForWriteDto
+ * @interface FullContextForReadDto
  */
-export interface DepartmentForWriteDto {
+export interface FullContextForReadDto {
     /**
      * 
-     * @type {string}
-     * @memberof DepartmentForWriteDto
+     * @type {StudentsGroupForReadDto}
+     * @memberof FullContextForReadDto
      */
-    'name'?: string | null;
+    'studentsGroup'?: StudentsGroupForReadDto;
     /**
      * 
-     * @type {string}
-     * @memberof DepartmentForWriteDto
+     * @type {TimeContextForReadDto}
+     * @memberof FullContextForReadDto
      */
-    'abbreviation'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof DepartmentForWriteDto
-     */
-    'link'?: string | null;
+    'timeContext'?: TimeContextForReadDto;
 }
+/**
+ * 
+ * @export
+ * @interface FullContextForWriteDto
+ */
+export interface FullContextForWriteDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof FullContextForWriteDto
+     */
+    'studentsGroupId'?: number;
+    /**
+     * 
+     * @type {TimeContextForWriteDto}
+     * @memberof FullContextForWriteDto
+     */
+    'timeContext'?: TimeContextForWriteDto;
+}
+/**
+ * 
+ * @export
+ * @interface FullContextJunction
+ */
+export interface FullContextJunction {
+    /**
+     * 
+     * @type {number}
+     * @memberof FullContextJunction
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FullContextJunction
+     */
+    'studentsGroupId'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FullContextJunction
+     */
+    'timeContextId'?: number;
+    /**
+     * 
+     * @type {StudentsGroup}
+     * @memberof FullContextJunction
+     */
+    'studentsGroup': StudentsGroup;
+    /**
+     * 
+     * @type {TimeContext}
+     * @memberof FullContextJunction
+     */
+    'timeContext': TimeContext;
+}
+/**
+ * 
+ * @export
+ * @interface Lesson
+ */
+export interface Lesson {
+    /**
+     * 
+     * @type {number}
+     * @memberof Lesson
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {ClassType}
+     * @memberof Lesson
+     */
+    'classType'?: ClassType;
+    /**
+     * 
+     * @type {number}
+     * @memberof Lesson
+     */
+    'subjectId'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Lesson
+     */
+    'teacherId'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Lesson
+     */
+    'roomId'?: number | null;
+    /**
+     * 
+     * @type {Subject}
+     * @memberof Lesson
+     */
+    'subject': Subject;
+    /**
+     * 
+     * @type {Teacher}
+     * @memberof Lesson
+     */
+    'teacher'?: Teacher;
+    /**
+     * 
+     * @type {Room}
+     * @memberof Lesson
+     */
+    'room'?: Room;
+}
+
+
 /**
  * 
  * @export
@@ -340,25 +250,25 @@ export interface LessonForReadDto {
      * @type {number}
      * @memberof LessonForReadDto
      */
-    'sequence'?: number;
+    'id'?: number;
     /**
      * 
-     * @type {string}
+     * @type {Subject}
      * @memberof LessonForReadDto
      */
-    'subject'?: string | null;
+    'subject'?: Subject;
     /**
      * 
-     * @type {string}
+     * @type {TeacherForReadDto}
      * @memberof LessonForReadDto
      */
-    'teacher'?: string | null;
+    'teacher'?: TeacherForReadDto;
     /**
      * 
-     * @type {string}
+     * @type {RoomForReadDto}
      * @memberof LessonForReadDto
      */
-    'room'?: string | null;
+    'room'?: RoomForReadDto;
     /**
      * 
      * @type {string}
@@ -372,12 +282,6 @@ export interface LessonForReadDto {
  * @interface LessonForWriteDto
  */
 export interface LessonForWriteDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof LessonForWriteDto
-     */
-    'sequence'?: number;
     /**
      * 
      * @type {number}
@@ -408,6 +312,45 @@ export interface LessonForWriteDto {
 /**
  * 
  * @export
+ * @interface ProblemDetails
+ */
+export interface ProblemDetails {
+    [key: string]: any;
+
+    /**
+     * 
+     * @type {string}
+     * @memberof ProblemDetails
+     */
+    'type'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProblemDetails
+     */
+    'title'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProblemDetails
+     */
+    'status'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProblemDetails
+     */
+    'detail'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProblemDetails
+     */
+    'instance'?: string | null;
+}
+/**
+ * 
+ * @export
  * @interface Room
  */
 export interface Room {
@@ -421,6 +364,37 @@ export interface Room {
      * 
      * @type {string}
      * @memberof Room
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Room
+     */
+    'lessonId'?: number | null;
+    /**
+     * 
+     * @type {Array<Lesson>}
+     * @memberof Room
+     */
+    'lesson'?: Array<Lesson> | null;
+}
+/**
+ * 
+ * @export
+ * @interface RoomForReadDto
+ */
+export interface RoomForReadDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof RoomForReadDto
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof RoomForReadDto
      */
     'name'?: string | null;
 }
@@ -440,6 +414,112 @@ export interface RoomForWriteDto {
 /**
  * 
  * @export
+ * @interface ScheduleLessonForReadDto
+ */
+export interface ScheduleLessonForReadDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof ScheduleLessonForReadDto
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {LessonForReadDto}
+     * @memberof ScheduleLessonForReadDto
+     */
+    'lesson'?: LessonForReadDto;
+    /**
+     * 
+     * @type {FullContextForReadDto}
+     * @memberof ScheduleLessonForReadDto
+     */
+    'fullContext'?: FullContextForReadDto;
+}
+/**
+ * 
+ * @export
+ * @interface ScheduleLessonForWriteDto
+ */
+export interface ScheduleLessonForWriteDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof ScheduleLessonForWriteDto
+     */
+    'lessonId'?: number;
+    /**
+     * 
+     * @type {FullContextForWriteDto}
+     * @memberof ScheduleLessonForWriteDto
+     */
+    'fullContext'?: FullContextForWriteDto;
+}
+/**
+ * 
+ * @export
+ * @interface ScheduleLessonJunction
+ */
+export interface ScheduleLessonJunction {
+    /**
+     * 
+     * @type {number}
+     * @memberof ScheduleLessonJunction
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ScheduleLessonJunction
+     */
+    'lessonId'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ScheduleLessonJunction
+     */
+    'fullContextId'?: number;
+    /**
+     * 
+     * @type {Lesson}
+     * @memberof ScheduleLessonJunction
+     */
+    'lesson': Lesson;
+    /**
+     * 
+     * @type {FullContextJunction}
+     * @memberof ScheduleLessonJunction
+     */
+    'fullContext': FullContextJunction;
+}
+/**
+ * 
+ * @export
+ * @interface StudentsGroup
+ */
+export interface StudentsGroup {
+    /**
+     * 
+     * @type {number}
+     * @memberof StudentsGroup
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof StudentsGroup
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {Array<FullContextJunction>}
+     * @memberof StudentsGroup
+     */
+    'fullContexts'?: Array<FullContextJunction> | null;
+}
+/**
+ * 
+ * @export
  * @interface StudentsGroupForReadDto
  */
 export interface StudentsGroupForReadDto {
@@ -454,7 +534,7 @@ export interface StudentsGroupForReadDto {
      * @type {string}
      * @memberof StudentsGroupForReadDto
      */
-    'groupName'?: string | null;
+    'name'?: string | null;
 }
 /**
  * 
@@ -467,19 +547,7 @@ export interface StudentsGroupForWriteDto {
      * @type {string}
      * @memberof StudentsGroupForWriteDto
      */
-    'groupName'?: string | null;
-    /**
-     * 
-     * @type {WeekScheduleForReadDto}
-     * @memberof StudentsGroupForWriteDto
-     */
-    'firstWeekSchedule'?: WeekScheduleForReadDto;
-    /**
-     * 
-     * @type {WeekScheduleForReadDto}
-     * @memberof StudentsGroupForWriteDto
-     */
-    'secondWeekSchedule'?: WeekScheduleForReadDto;
+    'name'?: string | null;
 }
 /**
  * 
@@ -544,10 +612,133 @@ export interface Teacher {
     'qualifications'?: string | null;
     /**
      * 
+     * @type {number}
+     * @memberof Teacher
+     */
+    'departmentId'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Teacher
+     */
+    'lessonId'?: number | null;
+    /**
+     * 
      * @type {Department}
      * @memberof Teacher
      */
     'department'?: Department;
+    /**
+     * 
+     * @type {Array<Lesson>}
+     * @memberof Teacher
+     */
+    'lesson'?: Array<Lesson> | null;
+}
+/**
+ * 
+ * @export
+ * @interface TeacherDepartmentForReadDto
+ */
+export interface TeacherDepartmentForReadDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof TeacherDepartmentForReadDto
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherDepartmentForReadDto
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherDepartmentForReadDto
+     */
+    'abbreviation'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherDepartmentForReadDto
+     */
+    'link'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface TeacherDepartmentForWriteDto
+ */
+export interface TeacherDepartmentForWriteDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherDepartmentForWriteDto
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherDepartmentForWriteDto
+     */
+    'abbreviation'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherDepartmentForWriteDto
+     */
+    'link'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface TeacherForReadDto
+ */
+export interface TeacherForReadDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof TeacherForReadDto
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherForReadDto
+     */
+    'firstName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherForReadDto
+     */
+    'lastName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherForReadDto
+     */
+    'middleName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherForReadDto
+     */
+    'email'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeacherForReadDto
+     */
+    'qualifications'?: string | null;
+    /**
+     * 
+     * @type {TeacherDepartmentForReadDto}
+     * @memberof TeacherForReadDto
+     */
+    'department'?: TeacherDepartmentForReadDto;
 }
 /**
  * 
@@ -591,6 +782,106 @@ export interface TeacherForWriteDto {
      * @memberof TeacherForWriteDto
      */
     'departmentId'?: number | null;
+}
+/**
+ * 
+ * @export
+ * @interface TimeContext
+ */
+export interface TimeContext {
+    /**
+     * 
+     * @type {number}
+     * @memberof TimeContext
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TimeContext
+     */
+    'lessonIndex'?: number;
+    /**
+     * 
+     * @type {DayOfWeek}
+     * @memberof TimeContext
+     */
+    'weekDay'?: DayOfWeek;
+    /**
+     * 
+     * @type {number}
+     * @memberof TimeContext
+     */
+    'weekIndex'?: number;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface TimeContextForReadDto
+ */
+export interface TimeContextForReadDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof TimeContextForReadDto
+     */
+    'lessonIndex'?: number;
+    /**
+     * 
+     * @type {DayOfWeek}
+     * @memberof TimeContextForReadDto
+     */
+    'weekDay'?: DayOfWeek;
+    /**
+     * 
+     * @type {number}
+     * @memberof TimeContextForReadDto
+     */
+    'weekIndex'?: number;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface TimeContextForWriteDto
+ */
+export interface TimeContextForWriteDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof TimeContextForWriteDto
+     */
+    'lessonIndex'?: number;
+    /**
+     * 
+     * @type {DayOfWeek}
+     * @memberof TimeContextForWriteDto
+     */
+    'weekDay'?: DayOfWeek;
+    /**
+     * 
+     * @type {number}
+     * @memberof TimeContextForWriteDto
+     */
+    'weekIndex'?: number;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface Token
+ */
+export interface Token {
+    /**
+     * 
+     * @type {string}
+     * @memberof Token
+     */
+    'value': string;
 }
 /**
  * 
@@ -672,490 +963,6 @@ export const UserRole = {
 export type UserRole = typeof UserRole[keyof typeof UserRole];
 
 
-/**
- * 
- * @export
- * @interface WeekScheduleForReadDto
- */
-export interface WeekScheduleForReadDto {
-    /**
-     * 
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'sunday'?: Array<LessonForReadDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'monday'?: Array<LessonForReadDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'tuesday'?: Array<LessonForReadDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'wednesday'?: Array<LessonForReadDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'thursday'?: Array<LessonForReadDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'friday'?: Array<LessonForReadDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'saturday'?: Array<LessonForReadDto> | null;
-}
-/**
- * 
- * @export
- * @interface WeekScheduleForWriteDto
- */
-export interface WeekScheduleForWriteDto {
-    /**
-     * 
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'sunday'?: Array<LessonForWriteDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'monday'?: Array<LessonForWriteDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'tuesday'?: Array<LessonForWriteDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'wednesday'?: Array<LessonForWriteDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'thursday'?: Array<LessonForWriteDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'friday'?: Array<LessonForWriteDto> | null;
-    /**
-     * 
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'saturday'?: Array<LessonForWriteDto> | null;
-}
-
-/**
- * ArticleApi - axios parameter creator
- * @export
- */
-export const ArticleApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @summary Retrieves all articles
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiArticleGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Article`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Deletes a article
-         * @param {number} id The ID of the article to delete
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiArticleIdDelete: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiArticleIdDelete', 'id', id)
-            const localVarPath = `/api/Article/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Retrieves a article by its ID
-         * @param {number} id Article ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiArticleIdGet: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiArticleIdGet', 'id', id)
-            const localVarPath = `/api/Article/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Updates an existing article
-         * @param {number} id The ID of the article to update
-         * @param {ArticleForWriteDto} [articleForWriteDto] The updated article data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiArticleIdPut: async (id: number, articleForWriteDto?: ArticleForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiArticleIdPut', 'id', id)
-            const localVarPath = `/api/Article/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(articleForWriteDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Creates a new article
-         * @param {ArticleForWriteDto} [articleForWriteDto] The new article
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiArticlePost: async (articleForWriteDto?: ArticleForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Article`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(articleForWriteDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * ArticleApi - functional programming interface
- * @export
- */
-export const ArticleApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = ArticleApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 
-         * @summary Retrieves all articles
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiArticleGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ArticleForReadDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiArticleGet(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Deletes a article
-         * @param {number} id The ID of the article to delete
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiArticleIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiArticleIdDelete(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Retrieves a article by its ID
-         * @param {number} id Article ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiArticleIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Article>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiArticleIdGet(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Updates an existing article
-         * @param {number} id The ID of the article to update
-         * @param {ArticleForWriteDto} [articleForWriteDto] The updated article data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiArticleIdPut(id: number, articleForWriteDto?: ArticleForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiArticleIdPut(id, articleForWriteDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Creates a new article
-         * @param {ArticleForWriteDto} [articleForWriteDto] The new article
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiArticlePost(articleForWriteDto?: ArticleForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Article>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiArticlePost(articleForWriteDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-    }
-};
-
-/**
- * ArticleApi - factory interface
- * @export
- */
-export const ArticleApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = ArticleApiFp(configuration)
-    return {
-        /**
-         * 
-         * @summary Retrieves all articles
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiArticleGet(options?: any): AxiosPromise<Array<ArticleForReadDto>> {
-            return localVarFp.apiArticleGet(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Deletes a article
-         * @param {number} id The ID of the article to delete
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiArticleIdDelete(id: number, options?: any): AxiosPromise<void> {
-            return localVarFp.apiArticleIdDelete(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Retrieves a article by its ID
-         * @param {number} id Article ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiArticleIdGet(id: number, options?: any): AxiosPromise<Article> {
-            return localVarFp.apiArticleIdGet(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Updates an existing article
-         * @param {number} id The ID of the article to update
-         * @param {ArticleForWriteDto} [articleForWriteDto] The updated article data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiArticleIdPut(id: number, articleForWriteDto?: ArticleForWriteDto, options?: any): AxiosPromise<void> {
-            return localVarFp.apiArticleIdPut(id, articleForWriteDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Creates a new article
-         * @param {ArticleForWriteDto} [articleForWriteDto] The new article
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiArticlePost(articleForWriteDto?: ArticleForWriteDto, options?: any): AxiosPromise<Article> {
-            return localVarFp.apiArticlePost(articleForWriteDto, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * ArticleApi - object-oriented interface
- * @export
- * @class ArticleApi
- * @extends {BaseAPI}
- */
-export class ArticleApi extends BaseAPI {
-    /**
-     * 
-     * @summary Retrieves all articles
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticleApi
-     */
-    public apiArticleGet(options?: AxiosRequestConfig) {
-        return ArticleApiFp(this.configuration).apiArticleGet(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Deletes a article
-     * @param {number} id The ID of the article to delete
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticleApi
-     */
-    public apiArticleIdDelete(id: number, options?: AxiosRequestConfig) {
-        return ArticleApiFp(this.configuration).apiArticleIdDelete(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Retrieves a article by its ID
-     * @param {number} id Article ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticleApi
-     */
-    public apiArticleIdGet(id: number, options?: AxiosRequestConfig) {
-        return ArticleApiFp(this.configuration).apiArticleIdGet(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Updates an existing article
-     * @param {number} id The ID of the article to update
-     * @param {ArticleForWriteDto} [articleForWriteDto] The updated article data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticleApi
-     */
-    public apiArticleIdPut(id: number, articleForWriteDto?: ArticleForWriteDto, options?: AxiosRequestConfig) {
-        return ArticleApiFp(this.configuration).apiArticleIdPut(id, articleForWriteDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Creates a new article
-     * @param {ArticleForWriteDto} [articleForWriteDto] The new article
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticleApi
-     */
-    public apiArticlePost(articleForWriteDto?: ArticleForWriteDto, options?: AxiosRequestConfig) {
-        return ArticleApiFp(this.configuration).apiArticlePost(articleForWriteDto, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
 
 /**
  * AuthApi - axios parameter creator
@@ -1231,10 +1038,11 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {Token} [token] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAuthRefreshTokenGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiAuthRefreshTokenPost: async (token?: Token, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/Auth/RefreshToken`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1243,19 +1051,18 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(token, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1330,11 +1137,12 @@ export const AuthApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {Token} [token] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAuthRefreshTokenGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAuthRefreshTokenGet(options);
+        async apiAuthRefreshTokenPost(token?: Token, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAuthRefreshTokenPost(token, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1376,11 +1184,12 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {Token} [token] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAuthRefreshTokenGet(options?: any): AxiosPromise<string> {
-            return localVarFp.apiAuthRefreshTokenGet(options).then((request) => request(axios, basePath));
+        apiAuthRefreshTokenPost(token?: Token, options?: any): AxiosPromise<string> {
+            return localVarFp.apiAuthRefreshTokenPost(token, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1424,12 +1233,13 @@ export class AuthApi extends BaseAPI {
 
     /**
      * 
+     * @param {Token} [token] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    public apiAuthRefreshTokenGet(options?: AxiosRequestConfig) {
-        return AuthApiFp(this.configuration).apiAuthRefreshTokenGet(options).then((request) => request(this.axios, this.basePath));
+    public apiAuthRefreshTokenPost(token?: Token, options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).apiAuthRefreshTokenPost(token, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1447,53 +1257,19 @@ export class AuthApi extends BaseAPI {
 
 
 /**
- * AuthorApi - axios parameter creator
+ * LessonApi - axios parameter creator
  * @export
  */
-export const AuthorApiAxiosParamCreator = function (configuration?: Configuration) {
+export const LessonApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Retrieves all authors
+         * @summary Deletes all lessons.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAuthorGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Author`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Deletes a author
-         * @param {number} id The ID of the author to delete
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiAuthorIdDelete: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiAuthorIdDelete', 'id', id)
-            const localVarPath = `/api/Author/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        apiLessonDelete: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/Lesson`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1522,16 +1298,15 @@ export const AuthorApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @summary Retrieves a author by its ID
-         * @param {number} id Author ID
+         * @summary Retrieves a list of lessons.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAuthorIdGet: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiAuthorIdGet', 'id', id)
-            const localVarPath = `/api/Author/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        apiLessonGet: async (range?: string, sort?: string, filter?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/Lesson`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1542,6 +1317,18 @@ export const AuthorApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (range !== undefined) {
+                localVarQueryParameter['range'] = range;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+            if (filter !== undefined) {
+                localVarQueryParameter['filter'] = filter;
+            }
 
 
     
@@ -1556,17 +1343,17 @@ export const AuthorApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @summary Updates an existing author
-         * @param {number} id The ID of the author to update
-         * @param {AuthorForWriteDto} [authorForWriteDto] The updated author data
+         * @summary Updates a lesson.
+         * @param {number} id 
+         * @param {LessonForWriteDto} [lessonForWriteDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAuthorIdPut: async (id: number, authorForWriteDto?: AuthorForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiLessonIdPut: async (id: number, lessonForWriteDto?: LessonForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiAuthorIdPut', 'id', id)
-            const localVarPath = `/api/Author/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            assertParamExists('apiLessonIdPut', 'id', id)
+            const localVarPath = `/api/Lesson/{Id}`
+                .replace(`{${"Id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1589,7 +1376,7 @@ export const AuthorApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(authorForWriteDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(lessonForWriteDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1598,288 +1385,16 @@ export const AuthorApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @summary Creates a new author
-         * @param {AuthorForWriteDto} [authorForWriteDto] The new author
+         * @summary Deletes a lesson.
+         * @param {number} lessonId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAuthorPost: async (authorForWriteDto?: AuthorForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Author`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(authorForWriteDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * AuthorApi - functional programming interface
- * @export
- */
-export const AuthorApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = AuthorApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 
-         * @summary Retrieves all authors
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiAuthorGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AuthorForReadDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAuthorGet(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Deletes a author
-         * @param {number} id The ID of the author to delete
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiAuthorIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAuthorIdDelete(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Retrieves a author by its ID
-         * @param {number} id Author ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiAuthorIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Author>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAuthorIdGet(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Updates an existing author
-         * @param {number} id The ID of the author to update
-         * @param {AuthorForWriteDto} [authorForWriteDto] The updated author data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiAuthorIdPut(id: number, authorForWriteDto?: AuthorForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAuthorIdPut(id, authorForWriteDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Creates a new author
-         * @param {AuthorForWriteDto} [authorForWriteDto] The new author
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiAuthorPost(authorForWriteDto?: AuthorForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Author>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAuthorPost(authorForWriteDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-    }
-};
-
-/**
- * AuthorApi - factory interface
- * @export
- */
-export const AuthorApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = AuthorApiFp(configuration)
-    return {
-        /**
-         * 
-         * @summary Retrieves all authors
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiAuthorGet(options?: any): AxiosPromise<Array<AuthorForReadDto>> {
-            return localVarFp.apiAuthorGet(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Deletes a author
-         * @param {number} id The ID of the author to delete
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiAuthorIdDelete(id: number, options?: any): AxiosPromise<void> {
-            return localVarFp.apiAuthorIdDelete(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Retrieves a author by its ID
-         * @param {number} id Author ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiAuthorIdGet(id: number, options?: any): AxiosPromise<Author> {
-            return localVarFp.apiAuthorIdGet(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Updates an existing author
-         * @param {number} id The ID of the author to update
-         * @param {AuthorForWriteDto} [authorForWriteDto] The updated author data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiAuthorIdPut(id: number, authorForWriteDto?: AuthorForWriteDto, options?: any): AxiosPromise<void> {
-            return localVarFp.apiAuthorIdPut(id, authorForWriteDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Creates a new author
-         * @param {AuthorForWriteDto} [authorForWriteDto] The new author
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiAuthorPost(authorForWriteDto?: AuthorForWriteDto, options?: any): AxiosPromise<Author> {
-            return localVarFp.apiAuthorPost(authorForWriteDto, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * AuthorApi - object-oriented interface
- * @export
- * @class AuthorApi
- * @extends {BaseAPI}
- */
-export class AuthorApi extends BaseAPI {
-    /**
-     * 
-     * @summary Retrieves all authors
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthorApi
-     */
-    public apiAuthorGet(options?: AxiosRequestConfig) {
-        return AuthorApiFp(this.configuration).apiAuthorGet(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Deletes a author
-     * @param {number} id The ID of the author to delete
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthorApi
-     */
-    public apiAuthorIdDelete(id: number, options?: AxiosRequestConfig) {
-        return AuthorApiFp(this.configuration).apiAuthorIdDelete(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Retrieves a author by its ID
-     * @param {number} id Author ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthorApi
-     */
-    public apiAuthorIdGet(id: number, options?: AxiosRequestConfig) {
-        return AuthorApiFp(this.configuration).apiAuthorIdGet(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Updates an existing author
-     * @param {number} id The ID of the author to update
-     * @param {AuthorForWriteDto} [authorForWriteDto] The updated author data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthorApi
-     */
-    public apiAuthorIdPut(id: number, authorForWriteDto?: AuthorForWriteDto, options?: AxiosRequestConfig) {
-        return AuthorApiFp(this.configuration).apiAuthorIdPut(id, authorForWriteDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Creates a new author
-     * @param {AuthorForWriteDto} [authorForWriteDto] The new author
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthorApi
-     */
-    public apiAuthorPost(authorForWriteDto?: AuthorForWriteDto, options?: AxiosRequestConfig) {
-        return AuthorApiFp(this.configuration).apiAuthorPost(authorForWriteDto, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
- * DepartmentApi - axios parameter creator
- * @export
- */
-export const DepartmentApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @summary Retrieves all departments
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiDepartmentGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Department`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Deletes a department
-         * @param {number} id The ID of the department to delete
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiDepartmentIdDelete: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiDepartmentIdDelete', 'id', id)
-            const localVarPath = `/api/Department/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        apiLessonLessonIdDelete: async (lessonId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'lessonId' is not null or undefined
+            assertParamExists('apiLessonLessonIdDelete', 'lessonId', lessonId)
+            const localVarPath = `/api/Lesson/{lessonId}`
+                .replace(`{${"lessonId"}}`, encodeURIComponent(String(lessonId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1908,16 +1423,16 @@ export const DepartmentApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @summary Retrieves a department by its ID
-         * @param {number} id Department ID
+         * @summary Retrieves a lesson by Id.
+         * @param {number} lessonId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiDepartmentIdGet: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiDepartmentIdGet', 'id', id)
-            const localVarPath = `/api/Department/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        apiLessonLessonIdGet: async (lessonId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'lessonId' is not null or undefined
+            assertParamExists('apiLessonLessonIdGet', 'lessonId', lessonId)
+            const localVarPath = `/api/Lesson/{lessonId}`
+                .replace(`{${"lessonId"}}`, encodeURIComponent(String(lessonId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1942,55 +1457,13 @@ export const DepartmentApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @summary Updates an existing department
-         * @param {number} id The ID of the department to update
-         * @param {DepartmentForWriteDto} [departmentForWriteDto] The updated department data
+         * @summary Creates a new lesson.
+         * @param {LessonForWriteDto} [lessonForWriteDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiDepartmentIdPut: async (id: number, departmentForWriteDto?: DepartmentForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiDepartmentIdPut', 'id', id)
-            const localVarPath = `/api/Department/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(departmentForWriteDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Creates a new department
-         * @param {DepartmentForWriteDto} [departmentForWriteDto] The department data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiDepartmentPost: async (departmentForWriteDto?: DepartmentForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Department`;
+        apiLessonPost: async (lessonForWriteDto?: LessonForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/Lesson`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2013,7 +1486,7 @@ export const DepartmentApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(departmentForWriteDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(lessonForWriteDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2024,195 +1497,234 @@ export const DepartmentApiAxiosParamCreator = function (configuration?: Configur
 };
 
 /**
- * DepartmentApi - functional programming interface
+ * LessonApi - functional programming interface
  * @export
  */
-export const DepartmentApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = DepartmentApiAxiosParamCreator(configuration)
+export const LessonApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = LessonApiAxiosParamCreator(configuration)
     return {
         /**
          * 
-         * @summary Retrieves all departments
+         * @summary Deletes all lessons.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiDepartmentGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Department>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiDepartmentGet(options);
+        async apiLessonDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiLessonDelete(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Deletes a department
-         * @param {number} id The ID of the department to delete
+         * @summary Retrieves a list of lessons.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiDepartmentIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiDepartmentIdDelete(id, options);
+        async apiLessonGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LessonForReadDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiLessonGet(range, sort, filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Retrieves a department by its ID
-         * @param {number} id Department ID
+         * @summary Updates a lesson.
+         * @param {number} id 
+         * @param {LessonForWriteDto} [lessonForWriteDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiDepartmentIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Department>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiDepartmentIdGet(id, options);
+        async apiLessonIdPut(id: number, lessonForWriteDto?: LessonForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LessonForReadDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiLessonIdPut(id, lessonForWriteDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Updates an existing department
-         * @param {number} id The ID of the department to update
-         * @param {DepartmentForWriteDto} [departmentForWriteDto] The updated department data
+         * @summary Deletes a lesson.
+         * @param {number} lessonId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiDepartmentIdPut(id: number, departmentForWriteDto?: DepartmentForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiDepartmentIdPut(id, departmentForWriteDto, options);
+        async apiLessonLessonIdDelete(lessonId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiLessonLessonIdDelete(lessonId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Creates a new department
-         * @param {DepartmentForWriteDto} [departmentForWriteDto] The department data
+         * @summary Retrieves a lesson by Id.
+         * @param {number} lessonId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiDepartmentPost(departmentForWriteDto?: DepartmentForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Department>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiDepartmentPost(departmentForWriteDto, options);
+        async apiLessonLessonIdGet(lessonId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LessonForReadDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiLessonLessonIdGet(lessonId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Creates a new lesson.
+         * @param {LessonForWriteDto} [lessonForWriteDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiLessonPost(lessonForWriteDto?: LessonForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LessonForReadDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiLessonPost(lessonForWriteDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
 };
 
 /**
- * DepartmentApi - factory interface
+ * LessonApi - factory interface
  * @export
  */
-export const DepartmentApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = DepartmentApiFp(configuration)
+export const LessonApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = LessonApiFp(configuration)
     return {
         /**
          * 
-         * @summary Retrieves all departments
+         * @summary Deletes all lessons.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiDepartmentGet(options?: any): AxiosPromise<Array<Department>> {
-            return localVarFp.apiDepartmentGet(options).then((request) => request(axios, basePath));
+        apiLessonDelete(options?: any): AxiosPromise<void> {
+            return localVarFp.apiLessonDelete(options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Deletes a department
-         * @param {number} id The ID of the department to delete
+         * @summary Retrieves a list of lessons.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiDepartmentIdDelete(id: number, options?: any): AxiosPromise<void> {
-            return localVarFp.apiDepartmentIdDelete(id, options).then((request) => request(axios, basePath));
+        apiLessonGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<Array<LessonForReadDto>> {
+            return localVarFp.apiLessonGet(range, sort, filter, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Retrieves a department by its ID
-         * @param {number} id Department ID
+         * @summary Updates a lesson.
+         * @param {number} id 
+         * @param {LessonForWriteDto} [lessonForWriteDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiDepartmentIdGet(id: number, options?: any): AxiosPromise<Department> {
-            return localVarFp.apiDepartmentIdGet(id, options).then((request) => request(axios, basePath));
+        apiLessonIdPut(id: number, lessonForWriteDto?: LessonForWriteDto, options?: any): AxiosPromise<LessonForReadDto> {
+            return localVarFp.apiLessonIdPut(id, lessonForWriteDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Updates an existing department
-         * @param {number} id The ID of the department to update
-         * @param {DepartmentForWriteDto} [departmentForWriteDto] The updated department data
+         * @summary Deletes a lesson.
+         * @param {number} lessonId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiDepartmentIdPut(id: number, departmentForWriteDto?: DepartmentForWriteDto, options?: any): AxiosPromise<void> {
-            return localVarFp.apiDepartmentIdPut(id, departmentForWriteDto, options).then((request) => request(axios, basePath));
+        apiLessonLessonIdDelete(lessonId: number, options?: any): AxiosPromise<void> {
+            return localVarFp.apiLessonLessonIdDelete(lessonId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Creates a new department
-         * @param {DepartmentForWriteDto} [departmentForWriteDto] The department data
+         * @summary Retrieves a lesson by Id.
+         * @param {number} lessonId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiDepartmentPost(departmentForWriteDto?: DepartmentForWriteDto, options?: any): AxiosPromise<Department> {
-            return localVarFp.apiDepartmentPost(departmentForWriteDto, options).then((request) => request(axios, basePath));
+        apiLessonLessonIdGet(lessonId: number, options?: any): AxiosPromise<LessonForReadDto> {
+            return localVarFp.apiLessonLessonIdGet(lessonId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Creates a new lesson.
+         * @param {LessonForWriteDto} [lessonForWriteDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiLessonPost(lessonForWriteDto?: LessonForWriteDto, options?: any): AxiosPromise<LessonForReadDto> {
+            return localVarFp.apiLessonPost(lessonForWriteDto, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * DepartmentApi - object-oriented interface
+ * LessonApi - object-oriented interface
  * @export
- * @class DepartmentApi
+ * @class LessonApi
  * @extends {BaseAPI}
  */
-export class DepartmentApi extends BaseAPI {
+export class LessonApi extends BaseAPI {
     /**
      * 
-     * @summary Retrieves all departments
+     * @summary Deletes all lessons.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DepartmentApi
+     * @memberof LessonApi
      */
-    public apiDepartmentGet(options?: AxiosRequestConfig) {
-        return DepartmentApiFp(this.configuration).apiDepartmentGet(options).then((request) => request(this.axios, this.basePath));
+    public apiLessonDelete(options?: AxiosRequestConfig) {
+        return LessonApiFp(this.configuration).apiLessonDelete(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Deletes a department
-     * @param {number} id The ID of the department to delete
+     * @summary Retrieves a list of lessons.
+     * @param {string} [range] 
+     * @param {string} [sort] 
+     * @param {string} [filter] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DepartmentApi
+     * @memberof LessonApi
      */
-    public apiDepartmentIdDelete(id: number, options?: AxiosRequestConfig) {
-        return DepartmentApiFp(this.configuration).apiDepartmentIdDelete(id, options).then((request) => request(this.axios, this.basePath));
+    public apiLessonGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) {
+        return LessonApiFp(this.configuration).apiLessonGet(range, sort, filter, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Retrieves a department by its ID
-     * @param {number} id Department ID
+     * @summary Updates a lesson.
+     * @param {number} id 
+     * @param {LessonForWriteDto} [lessonForWriteDto] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DepartmentApi
+     * @memberof LessonApi
      */
-    public apiDepartmentIdGet(id: number, options?: AxiosRequestConfig) {
-        return DepartmentApiFp(this.configuration).apiDepartmentIdGet(id, options).then((request) => request(this.axios, this.basePath));
+    public apiLessonIdPut(id: number, lessonForWriteDto?: LessonForWriteDto, options?: AxiosRequestConfig) {
+        return LessonApiFp(this.configuration).apiLessonIdPut(id, lessonForWriteDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Updates an existing department
-     * @param {number} id The ID of the department to update
-     * @param {DepartmentForWriteDto} [departmentForWriteDto] The updated department data
+     * @summary Deletes a lesson.
+     * @param {number} lessonId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DepartmentApi
+     * @memberof LessonApi
      */
-    public apiDepartmentIdPut(id: number, departmentForWriteDto?: DepartmentForWriteDto, options?: AxiosRequestConfig) {
-        return DepartmentApiFp(this.configuration).apiDepartmentIdPut(id, departmentForWriteDto, options).then((request) => request(this.axios, this.basePath));
+    public apiLessonLessonIdDelete(lessonId: number, options?: AxiosRequestConfig) {
+        return LessonApiFp(this.configuration).apiLessonLessonIdDelete(lessonId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Creates a new department
-     * @param {DepartmentForWriteDto} [departmentForWriteDto] The department data
+     * @summary Retrieves a lesson by Id.
+     * @param {number} lessonId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DepartmentApi
+     * @memberof LessonApi
      */
-    public apiDepartmentPost(departmentForWriteDto?: DepartmentForWriteDto, options?: AxiosRequestConfig) {
-        return DepartmentApiFp(this.configuration).apiDepartmentPost(departmentForWriteDto, options).then((request) => request(this.axios, this.basePath));
+    public apiLessonLessonIdGet(lessonId: number, options?: AxiosRequestConfig) {
+        return LessonApiFp(this.configuration).apiLessonLessonIdGet(lessonId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Creates a new lesson.
+     * @param {LessonForWriteDto} [lessonForWriteDto] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LessonApi
+     */
+    public apiLessonPost(lessonForWriteDto?: LessonForWriteDto, options?: AxiosRequestConfig) {
+        return LessonApiFp(this.configuration).apiLessonPost(lessonForWriteDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -2226,11 +1738,14 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 
-         * @summary Retrieves all rooms
+         * @summary Retrieves a list of rooms.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiRoomGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiRoomGet: async (range?: string, sort?: string, filter?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/Room`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2242,6 +1757,18 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (range !== undefined) {
+                localVarQueryParameter['range'] = range;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+            if (filter !== undefined) {
+                localVarQueryParameter['filter'] = filter;
+            }
 
 
     
@@ -2418,12 +1945,15 @@ export const RoomApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Retrieves all rooms
+         * @summary Retrieves a list of rooms.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiRoomGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Room>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiRoomGet(options);
+        async apiRoomGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Room>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiRoomGet(range, sort, filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2483,12 +2013,15 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 
-         * @summary Retrieves all rooms
+         * @summary Retrieves a list of rooms.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiRoomGet(options?: any): AxiosPromise<Array<Room>> {
-            return localVarFp.apiRoomGet(options).then((request) => request(axios, basePath));
+        apiRoomGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<Array<Room>> {
+            return localVarFp.apiRoomGet(range, sort, filter, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2543,13 +2076,16 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
 export class RoomApi extends BaseAPI {
     /**
      * 
-     * @summary Retrieves all rooms
+     * @summary Retrieves a list of rooms.
+     * @param {string} [range] 
+     * @param {string} [sort] 
+     * @param {string} [filter] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RoomApi
      */
-    public apiRoomGet(options?: AxiosRequestConfig) {
-        return RoomApiFp(this.configuration).apiRoomGet(options).then((request) => request(this.axios, this.basePath));
+    public apiRoomGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) {
+        return RoomApiFp(this.configuration).apiRoomGet(range, sort, filter, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2605,21 +2141,19 @@ export class RoomApi extends BaseAPI {
 
 
 /**
- * ScheduleApi - axios parameter creator
+ * ScheduleLessonApi - axios parameter creator
  * @export
  */
-export const ScheduleApiAxiosParamCreator = function (configuration?: Configuration) {
+export const ScheduleLessonApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Deletes a firs or second week schedule for students group
-         * @param {number} [studentsGroupId] Students group ID
-         * @param {boolean} [isSecondWeek] Specifies which week to delete, the first or the second. By default, the first
+         * @summary Deletes all lessons.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiScheduleDelete: async (studentsGroupId?: number, isSecondWeek?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Schedule`;
+        apiScheduleLessonDelete: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/ScheduleLesson`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2635,12 +2169,49 @@ export const ScheduleApiAxiosParamCreator = function (configuration?: Configurat
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-            if (studentsGroupId !== undefined) {
-                localVarQueryParameter['studentsGroupId'] = studentsGroupId;
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieves a list of schedule lessons.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiScheduleLessonGet: async (range?: string, sort?: string, filter?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/ScheduleLesson`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
             }
 
-            if (isSecondWeek !== undefined) {
-                localVarQueryParameter['isSecondWeek'] = isSecondWeek;
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (range !== undefined) {
+                localVarQueryParameter['range'] = range;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+            if (filter !== undefined) {
+                localVarQueryParameter['filter'] = filter;
             }
 
 
@@ -2656,15 +2227,132 @@ export const ScheduleApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @summary Update a one week schedule for students group
-         * @param {number} [studentsGroupId] Students group ID
-         * @param {boolean} [isSecondWeek] Specifies which week to update, the first or the second. By default, the first
-         * @param {WeekScheduleForWriteDto} [weekScheduleForWriteDto] The one week schedule data
+         * @summary Deletes a schedule lesson by Id.
+         * @param {string} id 
+         * @param {number} [scheduleLessonId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiSchedulePost: async (studentsGroupId?: number, isSecondWeek?: boolean, weekScheduleForWriteDto?: WeekScheduleForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Schedule`;
+        apiScheduleLessonIdDelete: async (id: string, scheduleLessonId?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('apiScheduleLessonIdDelete', 'id', id)
+            const localVarPath = `/api/ScheduleLesson/{Id}`
+                .replace(`{${"Id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (scheduleLessonId !== undefined) {
+                localVarQueryParameter['scheduleLessonId'] = scheduleLessonId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieves schedule lesson by Id.
+         * @param {number} id Lesson Id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiScheduleLessonIdGet: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('apiScheduleLessonIdGet', 'id', id)
+            const localVarPath = `/api/ScheduleLesson/{Id}`
+                .replace(`{${"Id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Updates an existing schedule lesson
+         * @param {number} id 
+         * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiScheduleLessonIdPut: async (id: number, scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('apiScheduleLessonIdPut', 'id', id)
+            const localVarPath = `/api/ScheduleLesson/{Id}`
+                .replace(`{${"Id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(scheduleLessonForWriteDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Creates new schedule lesson
+         * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiScheduleLessonPost: async (scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/ScheduleLesson`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2680,14 +2368,6 @@ export const ScheduleApiAxiosParamCreator = function (configuration?: Configurat
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
-            if (studentsGroupId !== undefined) {
-                localVarQueryParameter['studentsGroupId'] = studentsGroupId;
-            }
-
-            if (isSecondWeek !== undefined) {
-                localVarQueryParameter['isSecondWeek'] = isSecondWeek;
-            }
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -2695,41 +2375,7 @@ export const ScheduleApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(weekScheduleForWriteDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Retrieves a students group two weeks schedule by group ID
-         * @param {number} studentsGroupId Students group ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiScheduleStudentsGroupIdGet: async (studentsGroupId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'studentsGroupId' is not null or undefined
-            assertParamExists('apiScheduleStudentsGroupIdGet', 'studentsGroupId', studentsGroupId)
-            const localVarPath = `/api/Schedule/{studentsGroupId}`
-                .replace(`{${"studentsGroupId"}}`, encodeURIComponent(String(studentsGroupId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(scheduleLessonForWriteDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2740,138 +2386,237 @@ export const ScheduleApiAxiosParamCreator = function (configuration?: Configurat
 };
 
 /**
- * ScheduleApi - functional programming interface
+ * ScheduleLessonApi - functional programming interface
  * @export
  */
-export const ScheduleApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = ScheduleApiAxiosParamCreator(configuration)
+export const ScheduleLessonApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ScheduleLessonApiAxiosParamCreator(configuration)
     return {
         /**
          * 
-         * @summary Deletes a firs or second week schedule for students group
-         * @param {number} [studentsGroupId] Students group ID
-         * @param {boolean} [isSecondWeek] Specifies which week to delete, the first or the second. By default, the first
+         * @summary Deletes all lessons.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiScheduleDelete(studentsGroupId?: number, isSecondWeek?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiScheduleDelete(studentsGroupId, isSecondWeek, options);
+        async apiScheduleLessonDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiScheduleLessonDelete(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Update a one week schedule for students group
-         * @param {number} [studentsGroupId] Students group ID
-         * @param {boolean} [isSecondWeek] Specifies which week to update, the first or the second. By default, the first
-         * @param {WeekScheduleForWriteDto} [weekScheduleForWriteDto] The one week schedule data
+         * @summary Retrieves a list of schedule lessons.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiSchedulePost(studentsGroupId?: number, isSecondWeek?: boolean, weekScheduleForWriteDto?: WeekScheduleForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WeekScheduleForReadDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiSchedulePost(studentsGroupId, isSecondWeek, weekScheduleForWriteDto, options);
+        async apiScheduleLessonGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleLessonForReadDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiScheduleLessonGet(range, sort, filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Retrieves a students group two weeks schedule by group ID
-         * @param {number} studentsGroupId Students group ID
+         * @summary Deletes a schedule lesson by Id.
+         * @param {string} id 
+         * @param {number} [scheduleLessonId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiScheduleStudentsGroupIdGet(studentsGroupId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StudentsGroupForWriteDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiScheduleStudentsGroupIdGet(studentsGroupId, options);
+        async apiScheduleLessonIdDelete(id: string, scheduleLessonId?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiScheduleLessonIdDelete(id, scheduleLessonId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Retrieves schedule lesson by Id.
+         * @param {number} id Lesson Id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiScheduleLessonIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleLessonForReadDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiScheduleLessonIdGet(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Updates an existing schedule lesson
+         * @param {number} id 
+         * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiScheduleLessonIdPut(id: number, scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleLessonJunction>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiScheduleLessonIdPut(id, scheduleLessonForWriteDto, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Creates new schedule lesson
+         * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiScheduleLessonPost(scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleLessonJunction>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiScheduleLessonPost(scheduleLessonForWriteDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
 };
 
 /**
- * ScheduleApi - factory interface
+ * ScheduleLessonApi - factory interface
  * @export
  */
-export const ScheduleApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = ScheduleApiFp(configuration)
+export const ScheduleLessonApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ScheduleLessonApiFp(configuration)
     return {
         /**
          * 
-         * @summary Deletes a firs or second week schedule for students group
-         * @param {number} [studentsGroupId] Students group ID
-         * @param {boolean} [isSecondWeek] Specifies which week to delete, the first or the second. By default, the first
+         * @summary Deletes all lessons.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiScheduleDelete(studentsGroupId?: number, isSecondWeek?: boolean, options?: any): AxiosPromise<void> {
-            return localVarFp.apiScheduleDelete(studentsGroupId, isSecondWeek, options).then((request) => request(axios, basePath));
+        apiScheduleLessonDelete(options?: any): AxiosPromise<void> {
+            return localVarFp.apiScheduleLessonDelete(options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Update a one week schedule for students group
-         * @param {number} [studentsGroupId] Students group ID
-         * @param {boolean} [isSecondWeek] Specifies which week to update, the first or the second. By default, the first
-         * @param {WeekScheduleForWriteDto} [weekScheduleForWriteDto] The one week schedule data
+         * @summary Retrieves a list of schedule lessons.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiSchedulePost(studentsGroupId?: number, isSecondWeek?: boolean, weekScheduleForWriteDto?: WeekScheduleForWriteDto, options?: any): AxiosPromise<WeekScheduleForReadDto> {
-            return localVarFp.apiSchedulePost(studentsGroupId, isSecondWeek, weekScheduleForWriteDto, options).then((request) => request(axios, basePath));
+        apiScheduleLessonGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<ScheduleLessonForReadDto> {
+            return localVarFp.apiScheduleLessonGet(range, sort, filter, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Retrieves a students group two weeks schedule by group ID
-         * @param {number} studentsGroupId Students group ID
+         * @summary Deletes a schedule lesson by Id.
+         * @param {string} id 
+         * @param {number} [scheduleLessonId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiScheduleStudentsGroupIdGet(studentsGroupId: number, options?: any): AxiosPromise<StudentsGroupForWriteDto> {
-            return localVarFp.apiScheduleStudentsGroupIdGet(studentsGroupId, options).then((request) => request(axios, basePath));
+        apiScheduleLessonIdDelete(id: string, scheduleLessonId?: number, options?: any): AxiosPromise<void> {
+            return localVarFp.apiScheduleLessonIdDelete(id, scheduleLessonId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Retrieves schedule lesson by Id.
+         * @param {number} id Lesson Id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiScheduleLessonIdGet(id: number, options?: any): AxiosPromise<ScheduleLessonForReadDto> {
+            return localVarFp.apiScheduleLessonIdGet(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Updates an existing schedule lesson
+         * @param {number} id 
+         * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiScheduleLessonIdPut(id: number, scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: any): AxiosPromise<ScheduleLessonJunction> {
+            return localVarFp.apiScheduleLessonIdPut(id, scheduleLessonForWriteDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Creates new schedule lesson
+         * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiScheduleLessonPost(scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: any): AxiosPromise<ScheduleLessonJunction> {
+            return localVarFp.apiScheduleLessonPost(scheduleLessonForWriteDto, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * ScheduleApi - object-oriented interface
+ * ScheduleLessonApi - object-oriented interface
  * @export
- * @class ScheduleApi
+ * @class ScheduleLessonApi
  * @extends {BaseAPI}
  */
-export class ScheduleApi extends BaseAPI {
+export class ScheduleLessonApi extends BaseAPI {
     /**
      * 
-     * @summary Deletes a firs or second week schedule for students group
-     * @param {number} [studentsGroupId] Students group ID
-     * @param {boolean} [isSecondWeek] Specifies which week to delete, the first or the second. By default, the first
+     * @summary Deletes all lessons.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ScheduleApi
+     * @memberof ScheduleLessonApi
      */
-    public apiScheduleDelete(studentsGroupId?: number, isSecondWeek?: boolean, options?: AxiosRequestConfig) {
-        return ScheduleApiFp(this.configuration).apiScheduleDelete(studentsGroupId, isSecondWeek, options).then((request) => request(this.axios, this.basePath));
+    public apiScheduleLessonDelete(options?: AxiosRequestConfig) {
+        return ScheduleLessonApiFp(this.configuration).apiScheduleLessonDelete(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Update a one week schedule for students group
-     * @param {number} [studentsGroupId] Students group ID
-     * @param {boolean} [isSecondWeek] Specifies which week to update, the first or the second. By default, the first
-     * @param {WeekScheduleForWriteDto} [weekScheduleForWriteDto] The one week schedule data
+     * @summary Retrieves a list of schedule lessons.
+     * @param {string} [range] 
+     * @param {string} [sort] 
+     * @param {string} [filter] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ScheduleApi
+     * @memberof ScheduleLessonApi
      */
-    public apiSchedulePost(studentsGroupId?: number, isSecondWeek?: boolean, weekScheduleForWriteDto?: WeekScheduleForWriteDto, options?: AxiosRequestConfig) {
-        return ScheduleApiFp(this.configuration).apiSchedulePost(studentsGroupId, isSecondWeek, weekScheduleForWriteDto, options).then((request) => request(this.axios, this.basePath));
+    public apiScheduleLessonGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) {
+        return ScheduleLessonApiFp(this.configuration).apiScheduleLessonGet(range, sort, filter, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Retrieves a students group two weeks schedule by group ID
-     * @param {number} studentsGroupId Students group ID
+     * @summary Deletes a schedule lesson by Id.
+     * @param {string} id 
+     * @param {number} [scheduleLessonId] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ScheduleApi
+     * @memberof ScheduleLessonApi
      */
-    public apiScheduleStudentsGroupIdGet(studentsGroupId: number, options?: AxiosRequestConfig) {
-        return ScheduleApiFp(this.configuration).apiScheduleStudentsGroupIdGet(studentsGroupId, options).then((request) => request(this.axios, this.basePath));
+    public apiScheduleLessonIdDelete(id: string, scheduleLessonId?: number, options?: AxiosRequestConfig) {
+        return ScheduleLessonApiFp(this.configuration).apiScheduleLessonIdDelete(id, scheduleLessonId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Retrieves schedule lesson by Id.
+     * @param {number} id Lesson Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScheduleLessonApi
+     */
+    public apiScheduleLessonIdGet(id: number, options?: AxiosRequestConfig) {
+        return ScheduleLessonApiFp(this.configuration).apiScheduleLessonIdGet(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Updates an existing schedule lesson
+     * @param {number} id 
+     * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScheduleLessonApi
+     */
+    public apiScheduleLessonIdPut(id: number, scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: AxiosRequestConfig) {
+        return ScheduleLessonApiFp(this.configuration).apiScheduleLessonIdPut(id, scheduleLessonForWriteDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Creates new schedule lesson
+     * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScheduleLessonApi
+     */
+    public apiScheduleLessonPost(scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: AxiosRequestConfig) {
+        return ScheduleLessonApiFp(this.configuration).apiScheduleLessonPost(scheduleLessonForWriteDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -2885,11 +2630,48 @@ export const StudentsGroupApiAxiosParamCreator = function (configuration?: Confi
     return {
         /**
          * 
-         * @summary Retrieves all students groups
+         * @summary Deletes all groups
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiStudentsGroupGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiStudentsGroupDelete: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/StudentsGroup`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieves a list of students groups.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiStudentsGroupGet: async (range?: string, sort?: string, filter?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/StudentsGroup`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2901,6 +2683,18 @@ export const StudentsGroupApiAxiosParamCreator = function (configuration?: Confi
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (range !== undefined) {
+                localVarQueryParameter['range'] = range;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+            if (filter !== undefined) {
+                localVarQueryParameter['filter'] = filter;
+            }
 
 
     
@@ -3030,11 +2824,11 @@ export const StudentsGroupApiAxiosParamCreator = function (configuration?: Confi
         /**
          * 
          * @summary Creates a new students group
-         * @param {string} [body] The students group name
+         * @param {StudentsGroupForWriteDto} [studentsGroupForWriteDto] The students group name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiStudentsGroupPost: async (body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiStudentsGroupPost: async (studentsGroupForWriteDto?: StudentsGroupForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/StudentsGroup`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3047,10 +2841,6 @@ export const StudentsGroupApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -3058,7 +2848,7 @@ export const StudentsGroupApiAxiosParamCreator = function (configuration?: Confi
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(studentsGroupForWriteDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3077,12 +2867,25 @@ export const StudentsGroupApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Retrieves all students groups
+         * @summary Deletes all groups
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiStudentsGroupGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<StudentsGroupForReadDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiStudentsGroupGet(options);
+        async apiStudentsGroupDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiStudentsGroupDelete(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Retrieves a list of students groups.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiStudentsGroupGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<StudentsGroupForReadDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiStudentsGroupGet(range, sort, filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3122,12 +2925,12 @@ export const StudentsGroupApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Creates a new students group
-         * @param {string} [body] The students group name
+         * @param {StudentsGroupForWriteDto} [studentsGroupForWriteDto] The students group name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiStudentsGroupPost(body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StudentsGroupForReadDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiStudentsGroupPost(body, options);
+        async apiStudentsGroupPost(studentsGroupForWriteDto?: StudentsGroupForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StudentsGroupForReadDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiStudentsGroupPost(studentsGroupForWriteDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -3142,12 +2945,24 @@ export const StudentsGroupApiFactory = function (configuration?: Configuration, 
     return {
         /**
          * 
-         * @summary Retrieves all students groups
+         * @summary Deletes all groups
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiStudentsGroupGet(options?: any): AxiosPromise<Array<StudentsGroupForReadDto>> {
-            return localVarFp.apiStudentsGroupGet(options).then((request) => request(axios, basePath));
+        apiStudentsGroupDelete(options?: any): AxiosPromise<void> {
+            return localVarFp.apiStudentsGroupDelete(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Retrieves a list of students groups.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiStudentsGroupGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<Array<StudentsGroupForReadDto>> {
+            return localVarFp.apiStudentsGroupGet(range, sort, filter, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3183,12 +2998,12 @@ export const StudentsGroupApiFactory = function (configuration?: Configuration, 
         /**
          * 
          * @summary Creates a new students group
-         * @param {string} [body] The students group name
+         * @param {StudentsGroupForWriteDto} [studentsGroupForWriteDto] The students group name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiStudentsGroupPost(body?: string, options?: any): AxiosPromise<StudentsGroupForReadDto> {
-            return localVarFp.apiStudentsGroupPost(body, options).then((request) => request(axios, basePath));
+        apiStudentsGroupPost(studentsGroupForWriteDto?: StudentsGroupForWriteDto, options?: any): AxiosPromise<StudentsGroupForReadDto> {
+            return localVarFp.apiStudentsGroupPost(studentsGroupForWriteDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3202,13 +3017,27 @@ export const StudentsGroupApiFactory = function (configuration?: Configuration, 
 export class StudentsGroupApi extends BaseAPI {
     /**
      * 
-     * @summary Retrieves all students groups
+     * @summary Deletes all groups
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StudentsGroupApi
      */
-    public apiStudentsGroupGet(options?: AxiosRequestConfig) {
-        return StudentsGroupApiFp(this.configuration).apiStudentsGroupGet(options).then((request) => request(this.axios, this.basePath));
+    public apiStudentsGroupDelete(options?: AxiosRequestConfig) {
+        return StudentsGroupApiFp(this.configuration).apiStudentsGroupDelete(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Retrieves a list of students groups.
+     * @param {string} [range] 
+     * @param {string} [sort] 
+     * @param {string} [filter] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StudentsGroupApi
+     */
+    public apiStudentsGroupGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) {
+        return StudentsGroupApiFp(this.configuration).apiStudentsGroupGet(range, sort, filter, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3251,13 +3080,13 @@ export class StudentsGroupApi extends BaseAPI {
     /**
      * 
      * @summary Creates a new students group
-     * @param {string} [body] The students group name
+     * @param {StudentsGroupForWriteDto} [studentsGroupForWriteDto] The students group name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StudentsGroupApi
      */
-    public apiStudentsGroupPost(body?: string, options?: AxiosRequestConfig) {
-        return StudentsGroupApiFp(this.configuration).apiStudentsGroupPost(body, options).then((request) => request(this.axios, this.basePath));
+    public apiStudentsGroupPost(studentsGroupForWriteDto?: StudentsGroupForWriteDto, options?: AxiosRequestConfig) {
+        return StudentsGroupApiFp(this.configuration).apiStudentsGroupPost(studentsGroupForWriteDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -3272,10 +3101,13 @@ export const SubjectApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Retrieves all subjects
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiSubjectGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiSubjectGet: async (range?: string, sort?: string, filter?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/Subject`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3287,6 +3119,18 @@ export const SubjectApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (range !== undefined) {
+                localVarQueryParameter['range'] = range;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+            if (filter !== undefined) {
+                localVarQueryParameter['filter'] = filter;
+            }
 
 
     
@@ -3375,11 +3219,11 @@ export const SubjectApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Updates an existing subject
          * @param {number} id The ID of the subject to update
-         * @param {string} [body] The updated subject name
+         * @param {Subject} [subject] The updated subject
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiSubjectIdPut: async (id: number, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiSubjectIdPut: async (id: number, subject?: Subject, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('apiSubjectIdPut', 'id', id)
             const localVarPath = `/api/Subject/{id}`
@@ -3406,7 +3250,7 @@ export const SubjectApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(subject, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3416,11 +3260,11 @@ export const SubjectApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Creates a new subject
-         * @param {string} [body] The subject name
+         * @param {Subject} [subject] The subject to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiSubjectPost: async (body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiSubjectPost: async (subject?: Subject, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/Subject`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3444,7 +3288,7 @@ export const SubjectApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(subject, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3464,11 +3308,14 @@ export const SubjectApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Retrieves all subjects
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiSubjectGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Subject>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiSubjectGet(options);
+        async apiSubjectGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Subject>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiSubjectGet(range, sort, filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3497,23 +3344,23 @@ export const SubjectApiFp = function(configuration?: Configuration) {
          * 
          * @summary Updates an existing subject
          * @param {number} id The ID of the subject to update
-         * @param {string} [body] The updated subject name
+         * @param {Subject} [subject] The updated subject
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiSubjectIdPut(id: number, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiSubjectIdPut(id, body, options);
+        async apiSubjectIdPut(id: number, subject?: Subject, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiSubjectIdPut(id, subject, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Creates a new subject
-         * @param {string} [body] The subject name
+         * @param {Subject} [subject] The subject to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiSubjectPost(body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Subject>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiSubjectPost(body, options);
+        async apiSubjectPost(subject?: Subject, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Subject>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiSubjectPost(subject, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -3529,11 +3376,14 @@ export const SubjectApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Retrieves all subjects
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiSubjectGet(options?: any): AxiosPromise<Array<Subject>> {
-            return localVarFp.apiSubjectGet(options).then((request) => request(axios, basePath));
+        apiSubjectGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<Array<Subject>> {
+            return localVarFp.apiSubjectGet(range, sort, filter, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3559,22 +3409,22 @@ export const SubjectApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Updates an existing subject
          * @param {number} id The ID of the subject to update
-         * @param {string} [body] The updated subject name
+         * @param {Subject} [subject] The updated subject
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiSubjectIdPut(id: number, body?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.apiSubjectIdPut(id, body, options).then((request) => request(axios, basePath));
+        apiSubjectIdPut(id: number, subject?: Subject, options?: any): AxiosPromise<void> {
+            return localVarFp.apiSubjectIdPut(id, subject, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Creates a new subject
-         * @param {string} [body] The subject name
+         * @param {Subject} [subject] The subject to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiSubjectPost(body?: string, options?: any): AxiosPromise<Subject> {
-            return localVarFp.apiSubjectPost(body, options).then((request) => request(axios, basePath));
+        apiSubjectPost(subject?: Subject, options?: any): AxiosPromise<Subject> {
+            return localVarFp.apiSubjectPost(subject, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3589,12 +3439,15 @@ export class SubjectApi extends BaseAPI {
     /**
      * 
      * @summary Retrieves all subjects
+     * @param {string} [range] 
+     * @param {string} [sort] 
+     * @param {string} [filter] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SubjectApi
      */
-    public apiSubjectGet(options?: AxiosRequestConfig) {
-        return SubjectApiFp(this.configuration).apiSubjectGet(options).then((request) => request(this.axios, this.basePath));
+    public apiSubjectGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) {
+        return SubjectApiFp(this.configuration).apiSubjectGet(range, sort, filter, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3625,25 +3478,25 @@ export class SubjectApi extends BaseAPI {
      * 
      * @summary Updates an existing subject
      * @param {number} id The ID of the subject to update
-     * @param {string} [body] The updated subject name
+     * @param {Subject} [subject] The updated subject
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SubjectApi
      */
-    public apiSubjectIdPut(id: number, body?: string, options?: AxiosRequestConfig) {
-        return SubjectApiFp(this.configuration).apiSubjectIdPut(id, body, options).then((request) => request(this.axios, this.basePath));
+    public apiSubjectIdPut(id: number, subject?: Subject, options?: AxiosRequestConfig) {
+        return SubjectApiFp(this.configuration).apiSubjectIdPut(id, subject, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Creates a new subject
-     * @param {string} [body] The subject name
+     * @param {Subject} [subject] The subject to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SubjectApi
      */
-    public apiSubjectPost(body?: string, options?: AxiosRequestConfig) {
-        return SubjectApiFp(this.configuration).apiSubjectPost(body, options).then((request) => request(this.axios, this.basePath));
+    public apiSubjectPost(subject?: Subject, options?: AxiosRequestConfig) {
+        return SubjectApiFp(this.configuration).apiSubjectPost(subject, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -3657,11 +3510,48 @@ export const TeacherApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
-         * @summary Retrieves all teachers
+         * @summary Deletes all teachers
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiTeacherGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiTeacherDelete: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/Teacher`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieves a list of teachers.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherGet: async (range?: string, sort?: string, filter?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/Teacher`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3673,6 +3563,18 @@ export const TeacherApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (range !== undefined) {
+                localVarQueryParameter['range'] = range;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+            if (filter !== undefined) {
+                localVarQueryParameter['filter'] = filter;
+            }
 
 
     
@@ -3781,10 +3683,6 @@ export const TeacherApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -3819,10 +3717,6 @@ export const TeacherApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -3849,12 +3743,25 @@ export const TeacherApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Retrieves all teachers
+         * @summary Deletes all teachers
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiTeacherGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Teacher>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiTeacherGet(options);
+        async apiTeacherDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiTeacherDelete(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Retrieves a list of teachers.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiTeacherGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TeacherForReadDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiTeacherGet(range, sort, filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3914,12 +3821,24 @@ export const TeacherApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
-         * @summary Retrieves all teachers
+         * @summary Deletes all teachers
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiTeacherGet(options?: any): AxiosPromise<Array<Teacher>> {
-            return localVarFp.apiTeacherGet(options).then((request) => request(axios, basePath));
+        apiTeacherDelete(options?: any): AxiosPromise<void> {
+            return localVarFp.apiTeacherDelete(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Retrieves a list of teachers.
+         * @param {string} [range] 
+         * @param {string} [sort] 
+         * @param {string} [filter] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<Array<TeacherForReadDto>> {
+            return localVarFp.apiTeacherGet(range, sort, filter, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3974,13 +3893,27 @@ export const TeacherApiFactory = function (configuration?: Configuration, basePa
 export class TeacherApi extends BaseAPI {
     /**
      * 
-     * @summary Retrieves all teachers
+     * @summary Deletes all teachers
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TeacherApi
      */
-    public apiTeacherGet(options?: AxiosRequestConfig) {
-        return TeacherApiFp(this.configuration).apiTeacherGet(options).then((request) => request(this.axios, this.basePath));
+    public apiTeacherDelete(options?: AxiosRequestConfig) {
+        return TeacherApiFp(this.configuration).apiTeacherDelete(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Retrieves a list of teachers.
+     * @param {string} [range] 
+     * @param {string} [sort] 
+     * @param {string} [filter] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherApi
+     */
+    public apiTeacherGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) {
+        return TeacherApiFp(this.configuration).apiTeacherGet(range, sort, filter, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4030,6 +3963,456 @@ export class TeacherApi extends BaseAPI {
      */
     public apiTeacherPost(teacherForWriteDto?: TeacherForWriteDto, options?: AxiosRequestConfig) {
         return TeacherApiFp(this.configuration).apiTeacherPost(teacherForWriteDto, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * TeacherDepartmentApi - axios parameter creator
+ * @export
+ */
+export const TeacherDepartmentApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Deletes all department
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentDelete: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/TeacherDepartment`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieves all departments
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/TeacherDepartment`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Deletes a department
+         * @param {number} id The ID of the department to delete
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentIdDelete: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('apiTeacherDepartmentIdDelete', 'id', id)
+            const localVarPath = `/api/TeacherDepartment/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieves a department by its ID
+         * @param {number} id Department ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentIdGet: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('apiTeacherDepartmentIdGet', 'id', id)
+            const localVarPath = `/api/TeacherDepartment/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Updates an existing department
+         * @param {number} id The ID of the department to update
+         * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The updated department data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentIdPut: async (id: number, teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('apiTeacherDepartmentIdPut', 'id', id)
+            const localVarPath = `/api/TeacherDepartment/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(teacherDepartmentForWriteDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Creates a new department
+         * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The department data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentPost: async (teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/TeacherDepartment`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(teacherDepartmentForWriteDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * TeacherDepartmentApi - functional programming interface
+ * @export
+ */
+export const TeacherDepartmentApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = TeacherDepartmentApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Deletes all department
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiTeacherDepartmentDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiTeacherDepartmentDelete(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Retrieves all departments
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiTeacherDepartmentGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Department>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiTeacherDepartmentGet(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Deletes a department
+         * @param {number} id The ID of the department to delete
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiTeacherDepartmentIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiTeacherDepartmentIdDelete(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Retrieves a department by its ID
+         * @param {number} id Department ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiTeacherDepartmentIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Department>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiTeacherDepartmentIdGet(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Updates an existing department
+         * @param {number} id The ID of the department to update
+         * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The updated department data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiTeacherDepartmentIdPut(id: number, teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiTeacherDepartmentIdPut(id, teacherDepartmentForWriteDto, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Creates a new department
+         * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The department data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiTeacherDepartmentPost(teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Department>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiTeacherDepartmentPost(teacherDepartmentForWriteDto, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * TeacherDepartmentApi - factory interface
+ * @export
+ */
+export const TeacherDepartmentApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = TeacherDepartmentApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Deletes all department
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentDelete(options?: any): AxiosPromise<void> {
+            return localVarFp.apiTeacherDepartmentDelete(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Retrieves all departments
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentGet(options?: any): AxiosPromise<Array<Department>> {
+            return localVarFp.apiTeacherDepartmentGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Deletes a department
+         * @param {number} id The ID of the department to delete
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentIdDelete(id: number, options?: any): AxiosPromise<void> {
+            return localVarFp.apiTeacherDepartmentIdDelete(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Retrieves a department by its ID
+         * @param {number} id Department ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentIdGet(id: number, options?: any): AxiosPromise<Department> {
+            return localVarFp.apiTeacherDepartmentIdGet(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Updates an existing department
+         * @param {number} id The ID of the department to update
+         * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The updated department data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentIdPut(id: number, teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: any): AxiosPromise<void> {
+            return localVarFp.apiTeacherDepartmentIdPut(id, teacherDepartmentForWriteDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Creates a new department
+         * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The department data
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiTeacherDepartmentPost(teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: any): AxiosPromise<Department> {
+            return localVarFp.apiTeacherDepartmentPost(teacherDepartmentForWriteDto, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * TeacherDepartmentApi - object-oriented interface
+ * @export
+ * @class TeacherDepartmentApi
+ * @extends {BaseAPI}
+ */
+export class TeacherDepartmentApi extends BaseAPI {
+    /**
+     * 
+     * @summary Deletes all department
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    public apiTeacherDepartmentDelete(options?: AxiosRequestConfig) {
+        return TeacherDepartmentApiFp(this.configuration).apiTeacherDepartmentDelete(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Retrieves all departments
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    public apiTeacherDepartmentGet(options?: AxiosRequestConfig) {
+        return TeacherDepartmentApiFp(this.configuration).apiTeacherDepartmentGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Deletes a department
+     * @param {number} id The ID of the department to delete
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    public apiTeacherDepartmentIdDelete(id: number, options?: AxiosRequestConfig) {
+        return TeacherDepartmentApiFp(this.configuration).apiTeacherDepartmentIdDelete(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Retrieves a department by its ID
+     * @param {number} id Department ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    public apiTeacherDepartmentIdGet(id: number, options?: AxiosRequestConfig) {
+        return TeacherDepartmentApiFp(this.configuration).apiTeacherDepartmentIdGet(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Updates an existing department
+     * @param {number} id The ID of the department to update
+     * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The updated department data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    public apiTeacherDepartmentIdPut(id: number, teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: AxiosRequestConfig) {
+        return TeacherDepartmentApiFp(this.configuration).apiTeacherDepartmentIdPut(id, teacherDepartmentForWriteDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Creates a new department
+     * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The department data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    public apiTeacherDepartmentPost(teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: AxiosRequestConfig) {
+        return TeacherDepartmentApiFp(this.configuration).apiTeacherDepartmentPost(teacherDepartmentForWriteDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
