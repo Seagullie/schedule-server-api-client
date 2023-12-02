@@ -1,7 +1,14 @@
 // Import the generated client library
 
-import { AuthApi, AuthorApi, AuthorForReadDto, AuthorForWriteDto, Configuration } from "./index"
+import axios from "axios"
+import https from "https"
+import { AuthApi, Configuration, TeacherApi, TeacherForReadDto, TeacherForWriteDto } from "./index"
 import dotenv from "dotenv"
+
+// accept self-signed certificates (for development purposes)
+axios.defaults.httpsAgent = new https.Agent({
+  rejectUnauthorized: false,
+})
 
 dotenv.config()
 
@@ -15,7 +22,7 @@ const reqConfig = new Configuration({
 })
 
 const authApi = new AuthApi(reqConfig)
-let authorApi: AuthorApi
+let teacherApi: TeacherApi
 
 let accessToken: string
 let refreshToken: string
@@ -32,37 +39,35 @@ async function authenticate() {
   refreshToken = response.data.refreshToken
 }
 
-async function createAuthor() {
+async function createTeacher() {
   // Create a new instance of the AuthorApi with the access token
-  authorApi = new AuthorApi(
+  teacherApi = new TeacherApi(
     new Configuration({
       ...reqConfig,
       accessToken: accessToken,
     })
   )
 
-  const author: AuthorForWriteDto = {
+  const author: TeacherForWriteDto = {
     firstName: "Editor",
     lastName: "Last Name",
-    bio: "Cool guy",
     email: "idk@gmail.com",
-    nickName: "idk",
   }
 
-  const response = await authorApi.apiAuthorPost(author)
+  const response = await teacherApi.apiTeacherPost(author)
 }
 
-async function getAuthors() {
-  const response = await authorApi.apiAuthorGet()
+async function getTeachers() {
+  const response = await teacherApi.apiTeacherGet()
 
-  const items: AuthorForReadDto[] = response.data
+  const items: TeacherForReadDto[] = response.data
   console.log("Received authors:", items)
 }
 
 export async function mainExample() {
   await authenticate()
-  await createAuthor()
-  await getAuthors()
+  await createTeacher()
+  await getTeachers()
 }
 
 mainExample()

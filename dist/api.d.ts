@@ -16,105 +16,6 @@ import { BaseAPI } from './base';
 /**
  *
  * @export
- * @interface Article
- */
-export interface Article {
-    /**
-     *
-     * @type {number}
-     * @memberof Article
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof Article
-     */
-    'title': string;
-    /**
-     *
-     * @type {string}
-     * @memberof Article
-     */
-    'body': string;
-    /**
-     *
-     * @type {string}
-     * @memberof Article
-     */
-    'published'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof Article
-     */
-    'authorId'?: number;
-    /**
-     *
-     * @type {Author}
-     * @memberof Article
-     */
-    'author'?: Author;
-}
-/**
- *
- * @export
- * @interface ArticleForReadDto
- */
-export interface ArticleForReadDto {
-    /**
-     *
-     * @type {number}
-     * @memberof ArticleForReadDto
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof ArticleForReadDto
-     */
-    'title'?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof ArticleForReadDto
-     */
-    'published'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof ArticleForReadDto
-     */
-    'authorId'?: number;
-}
-/**
- *
- * @export
- * @interface ArticleForWriteDto
- */
-export interface ArticleForWriteDto {
-    /**
-     *
-     * @type {string}
-     * @memberof ArticleForWriteDto
-     */
-    'title': string;
-    /**
-     *
-     * @type {string}
-     * @memberof ArticleForWriteDto
-     */
-    'body': string;
-    /**
-     *
-     * @type {number}
-     * @memberof ArticleForWriteDto
-     */
-    'authorId'?: number;
-}
-/**
- *
- * @export
  * @interface AuthenticatedResponse
  */
 export interface AuthenticatedResponse {
@@ -134,123 +35,6 @@ export interface AuthenticatedResponse {
 /**
  *
  * @export
- * @interface Author
- */
-export interface Author {
-    /**
-     *
-     * @type {number}
-     * @memberof Author
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof Author
-     */
-    'firstName'?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof Author
-     */
-    'lastName'?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof Author
-     */
-    'nickName'?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof Author
-     */
-    'email'?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof Author
-     */
-    'bio'?: string | null;
-}
-/**
- *
- * @export
- * @interface AuthorForReadDto
- */
-export interface AuthorForReadDto {
-    /**
-     *
-     * @type {number}
-     * @memberof AuthorForReadDto
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof AuthorForReadDto
-     */
-    'firstName'?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof AuthorForReadDto
-     */
-    'lastName'?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof AuthorForReadDto
-     */
-    'nickName'?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof AuthorForReadDto
-     */
-    'email'?: string | null;
-}
-/**
- *
- * @export
- * @interface AuthorForWriteDto
- */
-export interface AuthorForWriteDto {
-    /**
-     *
-     * @type {string}
-     * @memberof AuthorForWriteDto
-     */
-    'firstName': string;
-    /**
-     *
-     * @type {string}
-     * @memberof AuthorForWriteDto
-     */
-    'lastName': string;
-    /**
-     *
-     * @type {string}
-     * @memberof AuthorForWriteDto
-     */
-    'nickName': string;
-    /**
-     *
-     * @type {string}
-     * @memberof AuthorForWriteDto
-     */
-    'email': string;
-    /**
-     *
-     * @type {string}
-     * @memberof AuthorForWriteDto
-     */
-    'bio': string;
-}
-/**
- *
- * @export
  * @enum {string}
  */
 export declare const ClassType: {
@@ -259,6 +43,21 @@ export declare const ClassType: {
     readonly NUMBER_2: 2;
 };
 export type ClassType = typeof ClassType[keyof typeof ClassType];
+/**
+ *
+ * @export
+ * @enum {string}
+ */
+export declare const DayOfWeek: {
+    readonly NUMBER_0: 0;
+    readonly NUMBER_1: 1;
+    readonly NUMBER_2: 2;
+    readonly NUMBER_3: 3;
+    readonly NUMBER_4: 4;
+    readonly NUMBER_5: 5;
+    readonly NUMBER_6: 6;
+};
+export type DayOfWeek = typeof DayOfWeek[keyof typeof DayOfWeek];
 /**
  *
  * @export
@@ -293,27 +92,132 @@ export interface Department {
 /**
  *
  * @export
- * @interface DepartmentForWriteDto
+ * @interface FullContextForReadDto
  */
-export interface DepartmentForWriteDto {
+export interface FullContextForReadDto {
     /**
      *
-     * @type {string}
-     * @memberof DepartmentForWriteDto
+     * @type {StudentsGroupForReadDto}
+     * @memberof FullContextForReadDto
      */
-    'name'?: string | null;
+    'studentsGroup'?: StudentsGroupForReadDto;
     /**
      *
-     * @type {string}
-     * @memberof DepartmentForWriteDto
+     * @type {TimeContextForReadDto}
+     * @memberof FullContextForReadDto
      */
-    'abbreviation'?: string | null;
+    'timeContext'?: TimeContextForReadDto;
+}
+/**
+ *
+ * @export
+ * @interface FullContextForWriteDto
+ */
+export interface FullContextForWriteDto {
     /**
      *
-     * @type {string}
-     * @memberof DepartmentForWriteDto
+     * @type {number}
+     * @memberof FullContextForWriteDto
      */
-    'link'?: string | null;
+    'studentsGroupId'?: number;
+    /**
+     *
+     * @type {TimeContextForWriteDto}
+     * @memberof FullContextForWriteDto
+     */
+    'timeContext'?: TimeContextForWriteDto;
+}
+/**
+ *
+ * @export
+ * @interface FullContextJunction
+ */
+export interface FullContextJunction {
+    /**
+     *
+     * @type {number}
+     * @memberof FullContextJunction
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof FullContextJunction
+     */
+    'studentsGroupId'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof FullContextJunction
+     */
+    'timeContextId'?: number;
+    /**
+     *
+     * @type {StudentsGroup}
+     * @memberof FullContextJunction
+     */
+    'studentsGroup': StudentsGroup;
+    /**
+     *
+     * @type {TimeContext}
+     * @memberof FullContextJunction
+     */
+    'timeContext': TimeContext;
+}
+/**
+ *
+ * @export
+ * @interface Lesson
+ */
+export interface Lesson {
+    /**
+     *
+     * @type {number}
+     * @memberof Lesson
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {ClassType}
+     * @memberof Lesson
+     */
+    'classType'?: ClassType;
+    /**
+     *
+     * @type {number}
+     * @memberof Lesson
+     */
+    'subjectId'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Lesson
+     */
+    'teacherId'?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof Lesson
+     */
+    'roomId'?: number | null;
+    /**
+     *
+     * @type {Subject}
+     * @memberof Lesson
+     */
+    'subject': Subject;
+    /**
+     *
+     * @type {Teacher}
+     * @memberof Lesson
+     */
+    'teacher'?: Teacher;
+    /**
+     *
+     * @type {Room}
+     * @memberof Lesson
+     */
+    'room'?: Room;
 }
 /**
  *
@@ -326,25 +230,25 @@ export interface LessonForReadDto {
      * @type {number}
      * @memberof LessonForReadDto
      */
-    'sequence'?: number;
+    'id'?: number;
     /**
      *
-     * @type {string}
+     * @type {Subject}
      * @memberof LessonForReadDto
      */
-    'subject'?: string | null;
+    'subject'?: Subject;
     /**
      *
-     * @type {string}
+     * @type {TeacherForReadDto}
      * @memberof LessonForReadDto
      */
-    'teacher'?: string | null;
+    'teacher'?: TeacherForReadDto;
     /**
      *
-     * @type {string}
+     * @type {RoomForReadDto}
      * @memberof LessonForReadDto
      */
-    'room'?: string | null;
+    'room'?: RoomForReadDto;
     /**
      *
      * @type {string}
@@ -358,12 +262,6 @@ export interface LessonForReadDto {
  * @interface LessonForWriteDto
  */
 export interface LessonForWriteDto {
-    /**
-     *
-     * @type {number}
-     * @memberof LessonForWriteDto
-     */
-    'sequence'?: number;
     /**
      *
      * @type {number}
@@ -392,6 +290,44 @@ export interface LessonForWriteDto {
 /**
  *
  * @export
+ * @interface ProblemDetails
+ */
+export interface ProblemDetails {
+    [key: string]: any;
+    /**
+     *
+     * @type {string}
+     * @memberof ProblemDetails
+     */
+    'type'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof ProblemDetails
+     */
+    'title'?: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof ProblemDetails
+     */
+    'status'?: number | null;
+    /**
+     *
+     * @type {string}
+     * @memberof ProblemDetails
+     */
+    'detail'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof ProblemDetails
+     */
+    'instance'?: string | null;
+}
+/**
+ *
+ * @export
  * @interface Room
  */
 export interface Room {
@@ -405,6 +341,37 @@ export interface Room {
      *
      * @type {string}
      * @memberof Room
+     */
+    'name'?: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof Room
+     */
+    'lessonId'?: number | null;
+    /**
+     *
+     * @type {Array<Lesson>}
+     * @memberof Room
+     */
+    'lesson'?: Array<Lesson> | null;
+}
+/**
+ *
+ * @export
+ * @interface RoomForReadDto
+ */
+export interface RoomForReadDto {
+    /**
+     *
+     * @type {number}
+     * @memberof RoomForReadDto
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof RoomForReadDto
      */
     'name'?: string | null;
 }
@@ -424,6 +391,112 @@ export interface RoomForWriteDto {
 /**
  *
  * @export
+ * @interface ScheduleLessonForReadDto
+ */
+export interface ScheduleLessonForReadDto {
+    /**
+     *
+     * @type {number}
+     * @memberof ScheduleLessonForReadDto
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {LessonForReadDto}
+     * @memberof ScheduleLessonForReadDto
+     */
+    'lesson'?: LessonForReadDto;
+    /**
+     *
+     * @type {FullContextForReadDto}
+     * @memberof ScheduleLessonForReadDto
+     */
+    'fullContext'?: FullContextForReadDto;
+}
+/**
+ *
+ * @export
+ * @interface ScheduleLessonForWriteDto
+ */
+export interface ScheduleLessonForWriteDto {
+    /**
+     *
+     * @type {number}
+     * @memberof ScheduleLessonForWriteDto
+     */
+    'lessonId'?: number;
+    /**
+     *
+     * @type {FullContextForWriteDto}
+     * @memberof ScheduleLessonForWriteDto
+     */
+    'fullContext'?: FullContextForWriteDto;
+}
+/**
+ *
+ * @export
+ * @interface ScheduleLessonJunction
+ */
+export interface ScheduleLessonJunction {
+    /**
+     *
+     * @type {number}
+     * @memberof ScheduleLessonJunction
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ScheduleLessonJunction
+     */
+    'lessonId'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ScheduleLessonJunction
+     */
+    'fullContextId'?: number;
+    /**
+     *
+     * @type {Lesson}
+     * @memberof ScheduleLessonJunction
+     */
+    'lesson': Lesson;
+    /**
+     *
+     * @type {FullContextJunction}
+     * @memberof ScheduleLessonJunction
+     */
+    'fullContext': FullContextJunction;
+}
+/**
+ *
+ * @export
+ * @interface StudentsGroup
+ */
+export interface StudentsGroup {
+    /**
+     *
+     * @type {number}
+     * @memberof StudentsGroup
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof StudentsGroup
+     */
+    'name'?: string | null;
+    /**
+     *
+     * @type {Array<FullContextJunction>}
+     * @memberof StudentsGroup
+     */
+    'fullContexts'?: Array<FullContextJunction> | null;
+}
+/**
+ *
+ * @export
  * @interface StudentsGroupForReadDto
  */
 export interface StudentsGroupForReadDto {
@@ -438,7 +511,7 @@ export interface StudentsGroupForReadDto {
      * @type {string}
      * @memberof StudentsGroupForReadDto
      */
-    'groupName'?: string | null;
+    'name'?: string | null;
 }
 /**
  *
@@ -451,19 +524,7 @@ export interface StudentsGroupForWriteDto {
      * @type {string}
      * @memberof StudentsGroupForWriteDto
      */
-    'groupName'?: string | null;
-    /**
-     *
-     * @type {WeekScheduleForReadDto}
-     * @memberof StudentsGroupForWriteDto
-     */
-    'firstWeekSchedule'?: WeekScheduleForReadDto;
-    /**
-     *
-     * @type {WeekScheduleForReadDto}
-     * @memberof StudentsGroupForWriteDto
-     */
-    'secondWeekSchedule'?: WeekScheduleForReadDto;
+    'name'?: string | null;
 }
 /**
  *
@@ -528,10 +589,133 @@ export interface Teacher {
     'qualifications'?: string | null;
     /**
      *
+     * @type {number}
+     * @memberof Teacher
+     */
+    'departmentId'?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof Teacher
+     */
+    'lessonId'?: number | null;
+    /**
+     *
      * @type {Department}
      * @memberof Teacher
      */
     'department'?: Department;
+    /**
+     *
+     * @type {Array<Lesson>}
+     * @memberof Teacher
+     */
+    'lesson'?: Array<Lesson> | null;
+}
+/**
+ *
+ * @export
+ * @interface TeacherDepartmentForReadDto
+ */
+export interface TeacherDepartmentForReadDto {
+    /**
+     *
+     * @type {number}
+     * @memberof TeacherDepartmentForReadDto
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherDepartmentForReadDto
+     */
+    'name'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherDepartmentForReadDto
+     */
+    'abbreviation'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherDepartmentForReadDto
+     */
+    'link'?: string | null;
+}
+/**
+ *
+ * @export
+ * @interface TeacherDepartmentForWriteDto
+ */
+export interface TeacherDepartmentForWriteDto {
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherDepartmentForWriteDto
+     */
+    'name'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherDepartmentForWriteDto
+     */
+    'abbreviation'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherDepartmentForWriteDto
+     */
+    'link'?: string | null;
+}
+/**
+ *
+ * @export
+ * @interface TeacherForReadDto
+ */
+export interface TeacherForReadDto {
+    /**
+     *
+     * @type {number}
+     * @memberof TeacherForReadDto
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherForReadDto
+     */
+    'firstName'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherForReadDto
+     */
+    'lastName'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherForReadDto
+     */
+    'middleName'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherForReadDto
+     */
+    'email'?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof TeacherForReadDto
+     */
+    'qualifications'?: string | null;
+    /**
+     *
+     * @type {TeacherDepartmentForReadDto}
+     * @memberof TeacherForReadDto
+     */
+    'department'?: TeacherDepartmentForReadDto;
 }
 /**
  *
@@ -575,6 +759,100 @@ export interface TeacherForWriteDto {
      * @memberof TeacherForWriteDto
      */
     'departmentId'?: number | null;
+}
+/**
+ *
+ * @export
+ * @interface TimeContext
+ */
+export interface TimeContext {
+    /**
+     *
+     * @type {number}
+     * @memberof TimeContext
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof TimeContext
+     */
+    'lessonIndex'?: number;
+    /**
+     *
+     * @type {DayOfWeek}
+     * @memberof TimeContext
+     */
+    'weekDay'?: DayOfWeek;
+    /**
+     *
+     * @type {number}
+     * @memberof TimeContext
+     */
+    'weekIndex'?: number;
+}
+/**
+ *
+ * @export
+ * @interface TimeContextForReadDto
+ */
+export interface TimeContextForReadDto {
+    /**
+     *
+     * @type {number}
+     * @memberof TimeContextForReadDto
+     */
+    'lessonIndex'?: number;
+    /**
+     *
+     * @type {DayOfWeek}
+     * @memberof TimeContextForReadDto
+     */
+    'weekDay'?: DayOfWeek;
+    /**
+     *
+     * @type {number}
+     * @memberof TimeContextForReadDto
+     */
+    'weekIndex'?: number;
+}
+/**
+ *
+ * @export
+ * @interface TimeContextForWriteDto
+ */
+export interface TimeContextForWriteDto {
+    /**
+     *
+     * @type {number}
+     * @memberof TimeContextForWriteDto
+     */
+    'lessonIndex'?: number;
+    /**
+     *
+     * @type {DayOfWeek}
+     * @memberof TimeContextForWriteDto
+     */
+    'weekDay'?: DayOfWeek;
+    /**
+     *
+     * @type {number}
+     * @memberof TimeContextForWriteDto
+     */
+    'weekIndex'?: number;
+}
+/**
+ *
+ * @export
+ * @interface Token
+ */
+export interface Token {
+    /**
+     *
+     * @type {string}
+     * @memberof Token
+     */
+    'value': string;
 }
 /**
  *
@@ -649,295 +927,6 @@ export declare const UserRole: {
 };
 export type UserRole = typeof UserRole[keyof typeof UserRole];
 /**
- *
- * @export
- * @interface WeekScheduleForReadDto
- */
-export interface WeekScheduleForReadDto {
-    /**
-     *
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'sunday'?: Array<LessonForReadDto> | null;
-    /**
-     *
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'monday'?: Array<LessonForReadDto> | null;
-    /**
-     *
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'tuesday'?: Array<LessonForReadDto> | null;
-    /**
-     *
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'wednesday'?: Array<LessonForReadDto> | null;
-    /**
-     *
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'thursday'?: Array<LessonForReadDto> | null;
-    /**
-     *
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'friday'?: Array<LessonForReadDto> | null;
-    /**
-     *
-     * @type {Array<LessonForReadDto>}
-     * @memberof WeekScheduleForReadDto
-     */
-    'saturday'?: Array<LessonForReadDto> | null;
-}
-/**
- *
- * @export
- * @interface WeekScheduleForWriteDto
- */
-export interface WeekScheduleForWriteDto {
-    /**
-     *
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'sunday'?: Array<LessonForWriteDto> | null;
-    /**
-     *
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'monday'?: Array<LessonForWriteDto> | null;
-    /**
-     *
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'tuesday'?: Array<LessonForWriteDto> | null;
-    /**
-     *
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'wednesday'?: Array<LessonForWriteDto> | null;
-    /**
-     *
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'thursday'?: Array<LessonForWriteDto> | null;
-    /**
-     *
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'friday'?: Array<LessonForWriteDto> | null;
-    /**
-     *
-     * @type {Array<LessonForWriteDto>}
-     * @memberof WeekScheduleForWriteDto
-     */
-    'saturday'?: Array<LessonForWriteDto> | null;
-}
-/**
- * ArticleApi - axios parameter creator
- * @export
- */
-export declare const ArticleApiAxiosParamCreator: (configuration?: Configuration) => {
-    /**
-     *
-     * @summary Retrieves all articles
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Deletes a article
-     * @param {number} id The ID of the article to delete
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleIdDelete: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Retrieves a article by its ID
-     * @param {number} id Article ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleIdGet: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Updates an existing article
-     * @param {number} id The ID of the article to update
-     * @param {ArticleForWriteDto} [articleForWriteDto] The updated article data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleIdPut: (id: number, articleForWriteDto?: ArticleForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Creates a new article
-     * @param {ArticleForWriteDto} [articleForWriteDto] The new article
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticlePost: (articleForWriteDto?: ArticleForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-};
-/**
- * ArticleApi - functional programming interface
- * @export
- */
-export declare const ArticleApiFp: (configuration?: Configuration) => {
-    /**
-     *
-     * @summary Retrieves all articles
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ArticleForReadDto>>>;
-    /**
-     *
-     * @summary Deletes a article
-     * @param {number} id The ID of the article to delete
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
-    /**
-     *
-     * @summary Retrieves a article by its ID
-     * @param {number} id Article ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Article>>;
-    /**
-     *
-     * @summary Updates an existing article
-     * @param {number} id The ID of the article to update
-     * @param {ArticleForWriteDto} [articleForWriteDto] The updated article data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleIdPut(id: number, articleForWriteDto?: ArticleForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
-    /**
-     *
-     * @summary Creates a new article
-     * @param {ArticleForWriteDto} [articleForWriteDto] The new article
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticlePost(articleForWriteDto?: ArticleForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Article>>;
-};
-/**
- * ArticleApi - factory interface
- * @export
- */
-export declare const ArticleApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
-    /**
-     *
-     * @summary Retrieves all articles
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleGet(options?: any): AxiosPromise<Array<ArticleForReadDto>>;
-    /**
-     *
-     * @summary Deletes a article
-     * @param {number} id The ID of the article to delete
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleIdDelete(id: number, options?: any): AxiosPromise<void>;
-    /**
-     *
-     * @summary Retrieves a article by its ID
-     * @param {number} id Article ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleIdGet(id: number, options?: any): AxiosPromise<Article>;
-    /**
-     *
-     * @summary Updates an existing article
-     * @param {number} id The ID of the article to update
-     * @param {ArticleForWriteDto} [articleForWriteDto] The updated article data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticleIdPut(id: number, articleForWriteDto?: ArticleForWriteDto, options?: any): AxiosPromise<void>;
-    /**
-     *
-     * @summary Creates a new article
-     * @param {ArticleForWriteDto} [articleForWriteDto] The new article
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiArticlePost(articleForWriteDto?: ArticleForWriteDto, options?: any): AxiosPromise<Article>;
-};
-/**
- * ArticleApi - object-oriented interface
- * @export
- * @class ArticleApi
- * @extends {BaseAPI}
- */
-export declare class ArticleApi extends BaseAPI {
-    /**
-     *
-     * @summary Retrieves all articles
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticleApi
-     */
-    apiArticleGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ArticleForReadDto[], any>>;
-    /**
-     *
-     * @summary Deletes a article
-     * @param {number} id The ID of the article to delete
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticleApi
-     */
-    apiArticleIdDelete(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
-    /**
-     *
-     * @summary Retrieves a article by its ID
-     * @param {number} id Article ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticleApi
-     */
-    apiArticleIdGet(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Article, any>>;
-    /**
-     *
-     * @summary Updates an existing article
-     * @param {number} id The ID of the article to update
-     * @param {ArticleForWriteDto} [articleForWriteDto] The updated article data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticleApi
-     */
-    apiArticleIdPut(id: number, articleForWriteDto?: ArticleForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
-    /**
-     *
-     * @summary Creates a new article
-     * @param {ArticleForWriteDto} [articleForWriteDto] The new article
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ArticleApi
-     */
-    apiArticlePost(articleForWriteDto?: ArticleForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Article, any>>;
-}
-/**
  * AuthApi - axios parameter creator
  * @export
  */
@@ -957,10 +946,11 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
     apiAuthLogoutDelete: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @param {Token} [token]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthRefreshTokenGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiAuthRefreshTokenPost: (token?: Token, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {UserForRegisterDto} [userForRegisterDto]
@@ -989,10 +979,11 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
     apiAuthLogoutDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
+     * @param {Token} [token]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthRefreshTokenGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
+    apiAuthRefreshTokenPost(token?: Token, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>>;
     /**
      *
      * @param {UserForRegisterDto} [userForRegisterDto]
@@ -1021,10 +1012,11 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
     apiAuthLogoutDelete(options?: any): AxiosPromise<void>;
     /**
      *
+     * @param {Token} [token]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthRefreshTokenGet(options?: any): AxiosPromise<string>;
+    apiAuthRefreshTokenPost(token?: Token, options?: any): AxiosPromise<string>;
     /**
      *
      * @param {UserForRegisterDto} [userForRegisterDto]
@@ -1057,11 +1049,12 @@ export declare class AuthApi extends BaseAPI {
     apiAuthLogoutDelete(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
+     * @param {Token} [token]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    apiAuthRefreshTokenGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
+    apiAuthRefreshTokenPost(token?: Token, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<string, any>>;
     /**
      *
      * @param {UserForRegisterDto} [userForRegisterDto]
@@ -1072,386 +1065,236 @@ export declare class AuthApi extends BaseAPI {
     apiAuthRegisterPost(userForRegisterDto?: UserForRegisterDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<UserForReadDto, any>>;
 }
 /**
- * AuthorApi - axios parameter creator
+ * LessonApi - axios parameter creator
  * @export
  */
-export declare const AuthorApiAxiosParamCreator: (configuration?: Configuration) => {
+export declare const LessonApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Retrieves all authors
+     * @summary Deletes all lessons.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiLessonDelete: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Deletes a author
-     * @param {number} id The ID of the author to delete
+     * @summary Retrieves a list of lessons.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorIdDelete: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiLessonGet: (range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Retrieves a author by its ID
-     * @param {number} id Author ID
+     * @summary Updates a lesson.
+     * @param {number} id
+     * @param {LessonForWriteDto} [lessonForWriteDto]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorIdGet: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiLessonIdPut: (id: number, lessonForWriteDto?: LessonForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Updates an existing author
-     * @param {number} id The ID of the author to update
-     * @param {AuthorForWriteDto} [authorForWriteDto] The updated author data
+     * @summary Deletes a lesson.
+     * @param {number} lessonId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorIdPut: (id: number, authorForWriteDto?: AuthorForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiLessonLessonIdDelete: (lessonId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Creates a new author
-     * @param {AuthorForWriteDto} [authorForWriteDto] The new author
+     * @summary Retrieves a lesson by Id.
+     * @param {number} lessonId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorPost: (authorForWriteDto?: AuthorForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiLessonLessonIdGet: (lessonId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Creates a new lesson.
+     * @param {LessonForWriteDto} [lessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiLessonPost: (lessonForWriteDto?: LessonForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
- * AuthorApi - functional programming interface
+ * LessonApi - functional programming interface
  * @export
  */
-export declare const AuthorApiFp: (configuration?: Configuration) => {
+export declare const LessonApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Retrieves all authors
+     * @summary Deletes all lessons.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AuthorForReadDto>>>;
+    apiLessonDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
-     * @summary Deletes a author
-     * @param {number} id The ID of the author to delete
+     * @summary Retrieves a list of lessons.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    apiLessonGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LessonForReadDto>>>;
     /**
      *
-     * @summary Retrieves a author by its ID
-     * @param {number} id Author ID
+     * @summary Updates a lesson.
+     * @param {number} id
+     * @param {LessonForWriteDto} [lessonForWriteDto]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Author>>;
+    apiLessonIdPut(id: number, lessonForWriteDto?: LessonForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LessonForReadDto>>;
     /**
      *
-     * @summary Updates an existing author
-     * @param {number} id The ID of the author to update
-     * @param {AuthorForWriteDto} [authorForWriteDto] The updated author data
+     * @summary Deletes a lesson.
+     * @param {number} lessonId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorIdPut(id: number, authorForWriteDto?: AuthorForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    apiLessonLessonIdDelete(lessonId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
-     * @summary Creates a new author
-     * @param {AuthorForWriteDto} [authorForWriteDto] The new author
+     * @summary Retrieves a lesson by Id.
+     * @param {number} lessonId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorPost(authorForWriteDto?: AuthorForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Author>>;
+    apiLessonLessonIdGet(lessonId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LessonForReadDto>>;
+    /**
+     *
+     * @summary Creates a new lesson.
+     * @param {LessonForWriteDto} [lessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiLessonPost(lessonForWriteDto?: LessonForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LessonForReadDto>>;
 };
 /**
- * AuthorApi - factory interface
+ * LessonApi - factory interface
  * @export
  */
-export declare const AuthorApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const LessonApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Retrieves all authors
+     * @summary Deletes all lessons.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorGet(options?: any): AxiosPromise<Array<AuthorForReadDto>>;
+    apiLessonDelete(options?: any): AxiosPromise<void>;
     /**
      *
-     * @summary Deletes a author
-     * @param {number} id The ID of the author to delete
+     * @summary Retrieves a list of lessons.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorIdDelete(id: number, options?: any): AxiosPromise<void>;
+    apiLessonGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<Array<LessonForReadDto>>;
     /**
      *
-     * @summary Retrieves a author by its ID
-     * @param {number} id Author ID
+     * @summary Updates a lesson.
+     * @param {number} id
+     * @param {LessonForWriteDto} [lessonForWriteDto]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorIdGet(id: number, options?: any): AxiosPromise<Author>;
+    apiLessonIdPut(id: number, lessonForWriteDto?: LessonForWriteDto, options?: any): AxiosPromise<LessonForReadDto>;
     /**
      *
-     * @summary Updates an existing author
-     * @param {number} id The ID of the author to update
-     * @param {AuthorForWriteDto} [authorForWriteDto] The updated author data
+     * @summary Deletes a lesson.
+     * @param {number} lessonId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorIdPut(id: number, authorForWriteDto?: AuthorForWriteDto, options?: any): AxiosPromise<void>;
+    apiLessonLessonIdDelete(lessonId: number, options?: any): AxiosPromise<void>;
     /**
      *
-     * @summary Creates a new author
-     * @param {AuthorForWriteDto} [authorForWriteDto] The new author
+     * @summary Retrieves a lesson by Id.
+     * @param {number} lessonId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiAuthorPost(authorForWriteDto?: AuthorForWriteDto, options?: any): AxiosPromise<Author>;
+    apiLessonLessonIdGet(lessonId: number, options?: any): AxiosPromise<LessonForReadDto>;
+    /**
+     *
+     * @summary Creates a new lesson.
+     * @param {LessonForWriteDto} [lessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiLessonPost(lessonForWriteDto?: LessonForWriteDto, options?: any): AxiosPromise<LessonForReadDto>;
 };
 /**
- * AuthorApi - object-oriented interface
+ * LessonApi - object-oriented interface
  * @export
- * @class AuthorApi
+ * @class LessonApi
  * @extends {BaseAPI}
  */
-export declare class AuthorApi extends BaseAPI {
+export declare class LessonApi extends BaseAPI {
     /**
      *
-     * @summary Retrieves all authors
+     * @summary Deletes all lessons.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AuthorApi
+     * @memberof LessonApi
      */
-    apiAuthorGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthorForReadDto[], any>>;
+    apiLessonDelete(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
-     * @summary Deletes a author
-     * @param {number} id The ID of the author to delete
+     * @summary Retrieves a list of lessons.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AuthorApi
+     * @memberof LessonApi
      */
-    apiAuthorIdDelete(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    apiLessonGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<LessonForReadDto[], any>>;
     /**
      *
-     * @summary Retrieves a author by its ID
-     * @param {number} id Author ID
+     * @summary Updates a lesson.
+     * @param {number} id
+     * @param {LessonForWriteDto} [lessonForWriteDto]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AuthorApi
+     * @memberof LessonApi
      */
-    apiAuthorIdGet(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Author, any>>;
+    apiLessonIdPut(id: number, lessonForWriteDto?: LessonForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<LessonForReadDto, any>>;
     /**
      *
-     * @summary Updates an existing author
-     * @param {number} id The ID of the author to update
-     * @param {AuthorForWriteDto} [authorForWriteDto] The updated author data
+     * @summary Deletes a lesson.
+     * @param {number} lessonId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AuthorApi
+     * @memberof LessonApi
      */
-    apiAuthorIdPut(id: number, authorForWriteDto?: AuthorForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    apiLessonLessonIdDelete(lessonId: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
-     * @summary Creates a new author
-     * @param {AuthorForWriteDto} [authorForWriteDto] The new author
+     * @summary Retrieves a lesson by Id.
+     * @param {number} lessonId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AuthorApi
+     * @memberof LessonApi
      */
-    apiAuthorPost(authorForWriteDto?: AuthorForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Author, any>>;
-}
-/**
- * DepartmentApi - axios parameter creator
- * @export
- */
-export declare const DepartmentApiAxiosParamCreator: (configuration?: Configuration) => {
+    apiLessonLessonIdGet(lessonId: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<LessonForReadDto, any>>;
     /**
      *
-     * @summary Retrieves all departments
+     * @summary Creates a new lesson.
+     * @param {LessonForWriteDto} [lessonForWriteDto]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
+     * @memberof LessonApi
      */
-    apiDepartmentGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Deletes a department
-     * @param {number} id The ID of the department to delete
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentIdDelete: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Retrieves a department by its ID
-     * @param {number} id Department ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentIdGet: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Updates an existing department
-     * @param {number} id The ID of the department to update
-     * @param {DepartmentForWriteDto} [departmentForWriteDto] The updated department data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentIdPut: (id: number, departmentForWriteDto?: DepartmentForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Creates a new department
-     * @param {DepartmentForWriteDto} [departmentForWriteDto] The department data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentPost: (departmentForWriteDto?: DepartmentForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-};
-/**
- * DepartmentApi - functional programming interface
- * @export
- */
-export declare const DepartmentApiFp: (configuration?: Configuration) => {
-    /**
-     *
-     * @summary Retrieves all departments
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Department>>>;
-    /**
-     *
-     * @summary Deletes a department
-     * @param {number} id The ID of the department to delete
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
-    /**
-     *
-     * @summary Retrieves a department by its ID
-     * @param {number} id Department ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Department>>;
-    /**
-     *
-     * @summary Updates an existing department
-     * @param {number} id The ID of the department to update
-     * @param {DepartmentForWriteDto} [departmentForWriteDto] The updated department data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentIdPut(id: number, departmentForWriteDto?: DepartmentForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
-    /**
-     *
-     * @summary Creates a new department
-     * @param {DepartmentForWriteDto} [departmentForWriteDto] The department data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentPost(departmentForWriteDto?: DepartmentForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Department>>;
-};
-/**
- * DepartmentApi - factory interface
- * @export
- */
-export declare const DepartmentApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
-    /**
-     *
-     * @summary Retrieves all departments
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentGet(options?: any): AxiosPromise<Array<Department>>;
-    /**
-     *
-     * @summary Deletes a department
-     * @param {number} id The ID of the department to delete
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentIdDelete(id: number, options?: any): AxiosPromise<void>;
-    /**
-     *
-     * @summary Retrieves a department by its ID
-     * @param {number} id Department ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentIdGet(id: number, options?: any): AxiosPromise<Department>;
-    /**
-     *
-     * @summary Updates an existing department
-     * @param {number} id The ID of the department to update
-     * @param {DepartmentForWriteDto} [departmentForWriteDto] The updated department data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentIdPut(id: number, departmentForWriteDto?: DepartmentForWriteDto, options?: any): AxiosPromise<void>;
-    /**
-     *
-     * @summary Creates a new department
-     * @param {DepartmentForWriteDto} [departmentForWriteDto] The department data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    apiDepartmentPost(departmentForWriteDto?: DepartmentForWriteDto, options?: any): AxiosPromise<Department>;
-};
-/**
- * DepartmentApi - object-oriented interface
- * @export
- * @class DepartmentApi
- * @extends {BaseAPI}
- */
-export declare class DepartmentApi extends BaseAPI {
-    /**
-     *
-     * @summary Retrieves all departments
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DepartmentApi
-     */
-    apiDepartmentGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Department[], any>>;
-    /**
-     *
-     * @summary Deletes a department
-     * @param {number} id The ID of the department to delete
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DepartmentApi
-     */
-    apiDepartmentIdDelete(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
-    /**
-     *
-     * @summary Retrieves a department by its ID
-     * @param {number} id Department ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DepartmentApi
-     */
-    apiDepartmentIdGet(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Department, any>>;
-    /**
-     *
-     * @summary Updates an existing department
-     * @param {number} id The ID of the department to update
-     * @param {DepartmentForWriteDto} [departmentForWriteDto] The updated department data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DepartmentApi
-     */
-    apiDepartmentIdPut(id: number, departmentForWriteDto?: DepartmentForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
-    /**
-     *
-     * @summary Creates a new department
-     * @param {DepartmentForWriteDto} [departmentForWriteDto] The department data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DepartmentApi
-     */
-    apiDepartmentPost(departmentForWriteDto?: DepartmentForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Department, any>>;
+    apiLessonPost(lessonForWriteDto?: LessonForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<LessonForReadDto, any>>;
 }
 /**
  * RoomApi - axios parameter creator
@@ -1460,11 +1303,14 @@ export declare class DepartmentApi extends BaseAPI {
 export declare const RoomApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Retrieves all rooms
+     * @summary Retrieves a list of rooms.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiRoomGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiRoomGet: (range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Deletes a room
@@ -1506,11 +1352,14 @@ export declare const RoomApiAxiosParamCreator: (configuration?: Configuration) =
 export declare const RoomApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Retrieves all rooms
+     * @summary Retrieves a list of rooms.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiRoomGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Room>>>;
+    apiRoomGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Room>>>;
     /**
      *
      * @summary Deletes a room
@@ -1552,11 +1401,14 @@ export declare const RoomApiFp: (configuration?: Configuration) => {
 export declare const RoomApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Retrieves all rooms
+     * @summary Retrieves a list of rooms.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiRoomGet(options?: any): AxiosPromise<Array<Room>>;
+    apiRoomGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<Array<Room>>;
     /**
      *
      * @summary Deletes a room
@@ -1600,12 +1452,15 @@ export declare const RoomApiFactory: (configuration?: Configuration, basePath?: 
 export declare class RoomApi extends BaseAPI {
     /**
      *
-     * @summary Retrieves all rooms
+     * @summary Retrieves a list of rooms.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RoomApi
      */
-    apiRoomGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Room[], any>>;
+    apiRoomGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Room[], any>>;
     /**
      *
      * @summary Deletes a room
@@ -1645,141 +1500,240 @@ export declare class RoomApi extends BaseAPI {
     apiRoomPost(roomForWriteDto?: RoomForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Room, any>>;
 }
 /**
- * ScheduleApi - axios parameter creator
+ * ScheduleLessonApi - axios parameter creator
  * @export
  */
-export declare const ScheduleApiAxiosParamCreator: (configuration?: Configuration) => {
+export declare const ScheduleLessonApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Deletes a firs or second week schedule for students group
-     * @param {number} [studentsGroupId] Students group ID
-     * @param {boolean} [isSecondWeek] Specifies which week to delete, the first or the second. By default, the first
+     * @summary Deletes all lessons.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiScheduleDelete: (studentsGroupId?: number, isSecondWeek?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiScheduleLessonDelete: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Update a one week schedule for students group
-     * @param {number} [studentsGroupId] Students group ID
-     * @param {boolean} [isSecondWeek] Specifies which week to update, the first or the second. By default, the first
-     * @param {WeekScheduleForWriteDto} [weekScheduleForWriteDto] The one week schedule data
+     * @summary Retrieves a list of schedule lessons.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSchedulePost: (studentsGroupId?: number, isSecondWeek?: boolean, weekScheduleForWriteDto?: WeekScheduleForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiScheduleLessonGet: (range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Retrieves a students group two weeks schedule by group ID
-     * @param {number} studentsGroupId Students group ID
+     * @summary Deletes a schedule lesson by Id.
+     * @param {string} id
+     * @param {number} [scheduleLessonId]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiScheduleStudentsGroupIdGet: (studentsGroupId: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiScheduleLessonIdDelete: (id: string, scheduleLessonId?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Retrieves schedule lesson by Id.
+     * @param {number} id Lesson Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiScheduleLessonIdGet: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Updates an existing schedule lesson
+     * @param {number} id
+     * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiScheduleLessonIdPut: (id: number, scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Creates new schedule lesson
+     * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiScheduleLessonPost: (scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
- * ScheduleApi - functional programming interface
+ * ScheduleLessonApi - functional programming interface
  * @export
  */
-export declare const ScheduleApiFp: (configuration?: Configuration) => {
+export declare const ScheduleLessonApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Deletes a firs or second week schedule for students group
-     * @param {number} [studentsGroupId] Students group ID
-     * @param {boolean} [isSecondWeek] Specifies which week to delete, the first or the second. By default, the first
+     * @summary Deletes all lessons.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiScheduleDelete(studentsGroupId?: number, isSecondWeek?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    apiScheduleLessonDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
-     * @summary Update a one week schedule for students group
-     * @param {number} [studentsGroupId] Students group ID
-     * @param {boolean} [isSecondWeek] Specifies which week to update, the first or the second. By default, the first
-     * @param {WeekScheduleForWriteDto} [weekScheduleForWriteDto] The one week schedule data
+     * @summary Retrieves a list of schedule lessons.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSchedulePost(studentsGroupId?: number, isSecondWeek?: boolean, weekScheduleForWriteDto?: WeekScheduleForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WeekScheduleForReadDto>>;
+    apiScheduleLessonGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleLessonForReadDto>>;
     /**
      *
-     * @summary Retrieves a students group two weeks schedule by group ID
-     * @param {number} studentsGroupId Students group ID
+     * @summary Deletes a schedule lesson by Id.
+     * @param {string} id
+     * @param {number} [scheduleLessonId]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiScheduleStudentsGroupIdGet(studentsGroupId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StudentsGroupForWriteDto>>;
+    apiScheduleLessonIdDelete(id: string, scheduleLessonId?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Retrieves schedule lesson by Id.
+     * @param {number} id Lesson Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiScheduleLessonIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleLessonForReadDto>>;
+    /**
+     *
+     * @summary Updates an existing schedule lesson
+     * @param {number} id
+     * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiScheduleLessonIdPut(id: number, scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleLessonJunction>>;
+    /**
+     *
+     * @summary Creates new schedule lesson
+     * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiScheduleLessonPost(scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleLessonJunction>>;
 };
 /**
- * ScheduleApi - factory interface
+ * ScheduleLessonApi - factory interface
  * @export
  */
-export declare const ScheduleApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+export declare const ScheduleLessonApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Deletes a firs or second week schedule for students group
-     * @param {number} [studentsGroupId] Students group ID
-     * @param {boolean} [isSecondWeek] Specifies which week to delete, the first or the second. By default, the first
+     * @summary Deletes all lessons.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiScheduleDelete(studentsGroupId?: number, isSecondWeek?: boolean, options?: any): AxiosPromise<void>;
+    apiScheduleLessonDelete(options?: any): AxiosPromise<void>;
     /**
      *
-     * @summary Update a one week schedule for students group
-     * @param {number} [studentsGroupId] Students group ID
-     * @param {boolean} [isSecondWeek] Specifies which week to update, the first or the second. By default, the first
-     * @param {WeekScheduleForWriteDto} [weekScheduleForWriteDto] The one week schedule data
+     * @summary Retrieves a list of schedule lessons.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSchedulePost(studentsGroupId?: number, isSecondWeek?: boolean, weekScheduleForWriteDto?: WeekScheduleForWriteDto, options?: any): AxiosPromise<WeekScheduleForReadDto>;
+    apiScheduleLessonGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<ScheduleLessonForReadDto>;
     /**
      *
-     * @summary Retrieves a students group two weeks schedule by group ID
-     * @param {number} studentsGroupId Students group ID
+     * @summary Deletes a schedule lesson by Id.
+     * @param {string} id
+     * @param {number} [scheduleLessonId]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiScheduleStudentsGroupIdGet(studentsGroupId: number, options?: any): AxiosPromise<StudentsGroupForWriteDto>;
+    apiScheduleLessonIdDelete(id: string, scheduleLessonId?: number, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Retrieves schedule lesson by Id.
+     * @param {number} id Lesson Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiScheduleLessonIdGet(id: number, options?: any): AxiosPromise<ScheduleLessonForReadDto>;
+    /**
+     *
+     * @summary Updates an existing schedule lesson
+     * @param {number} id
+     * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiScheduleLessonIdPut(id: number, scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: any): AxiosPromise<ScheduleLessonJunction>;
+    /**
+     *
+     * @summary Creates new schedule lesson
+     * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiScheduleLessonPost(scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: any): AxiosPromise<ScheduleLessonJunction>;
 };
 /**
- * ScheduleApi - object-oriented interface
+ * ScheduleLessonApi - object-oriented interface
  * @export
- * @class ScheduleApi
+ * @class ScheduleLessonApi
  * @extends {BaseAPI}
  */
-export declare class ScheduleApi extends BaseAPI {
+export declare class ScheduleLessonApi extends BaseAPI {
     /**
      *
-     * @summary Deletes a firs or second week schedule for students group
-     * @param {number} [studentsGroupId] Students group ID
-     * @param {boolean} [isSecondWeek] Specifies which week to delete, the first or the second. By default, the first
+     * @summary Deletes all lessons.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ScheduleApi
+     * @memberof ScheduleLessonApi
      */
-    apiScheduleDelete(studentsGroupId?: number, isSecondWeek?: boolean, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    apiScheduleLessonDelete(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
-     * @summary Update a one week schedule for students group
-     * @param {number} [studentsGroupId] Students group ID
-     * @param {boolean} [isSecondWeek] Specifies which week to update, the first or the second. By default, the first
-     * @param {WeekScheduleForWriteDto} [weekScheduleForWriteDto] The one week schedule data
+     * @summary Retrieves a list of schedule lessons.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ScheduleApi
+     * @memberof ScheduleLessonApi
      */
-    apiSchedulePost(studentsGroupId?: number, isSecondWeek?: boolean, weekScheduleForWriteDto?: WeekScheduleForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<WeekScheduleForReadDto, any>>;
+    apiScheduleLessonGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ScheduleLessonForReadDto, any>>;
     /**
      *
-     * @summary Retrieves a students group two weeks schedule by group ID
-     * @param {number} studentsGroupId Students group ID
+     * @summary Deletes a schedule lesson by Id.
+     * @param {string} id
+     * @param {number} [scheduleLessonId]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ScheduleApi
+     * @memberof ScheduleLessonApi
      */
-    apiScheduleStudentsGroupIdGet(studentsGroupId: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<StudentsGroupForWriteDto, any>>;
+    apiScheduleLessonIdDelete(id: string, scheduleLessonId?: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Retrieves schedule lesson by Id.
+     * @param {number} id Lesson Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScheduleLessonApi
+     */
+    apiScheduleLessonIdGet(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ScheduleLessonForReadDto, any>>;
+    /**
+     *
+     * @summary Updates an existing schedule lesson
+     * @param {number} id
+     * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScheduleLessonApi
+     */
+    apiScheduleLessonIdPut(id: number, scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ScheduleLessonJunction, any>>;
+    /**
+     *
+     * @summary Creates new schedule lesson
+     * @param {ScheduleLessonForWriteDto} [scheduleLessonForWriteDto]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScheduleLessonApi
+     */
+    apiScheduleLessonPost(scheduleLessonForWriteDto?: ScheduleLessonForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<ScheduleLessonJunction, any>>;
 }
 /**
  * StudentsGroupApi - axios parameter creator
@@ -1788,11 +1742,21 @@ export declare class ScheduleApi extends BaseAPI {
 export declare const StudentsGroupApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Retrieves all students groups
+     * @summary Deletes all groups
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiStudentsGroupGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiStudentsGroupDelete: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Retrieves a list of students groups.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiStudentsGroupGet: (range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Deletes a students group
@@ -1821,11 +1785,11 @@ export declare const StudentsGroupApiAxiosParamCreator: (configuration?: Configu
     /**
      *
      * @summary Creates a new students group
-     * @param {string} [body] The students group name
+     * @param {StudentsGroupForWriteDto} [studentsGroupForWriteDto] The students group name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiStudentsGroupPost: (body?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiStudentsGroupPost: (studentsGroupForWriteDto?: StudentsGroupForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * StudentsGroupApi - functional programming interface
@@ -1834,11 +1798,21 @@ export declare const StudentsGroupApiAxiosParamCreator: (configuration?: Configu
 export declare const StudentsGroupApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Retrieves all students groups
+     * @summary Deletes all groups
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiStudentsGroupGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<StudentsGroupForReadDto>>>;
+    apiStudentsGroupDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Retrieves a list of students groups.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiStudentsGroupGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<StudentsGroupForReadDto>>>;
     /**
      *
      * @summary Deletes a students group
@@ -1867,11 +1841,11 @@ export declare const StudentsGroupApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Creates a new students group
-     * @param {string} [body] The students group name
+     * @param {StudentsGroupForWriteDto} [studentsGroupForWriteDto] The students group name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiStudentsGroupPost(body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StudentsGroupForReadDto>>;
+    apiStudentsGroupPost(studentsGroupForWriteDto?: StudentsGroupForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StudentsGroupForReadDto>>;
 };
 /**
  * StudentsGroupApi - factory interface
@@ -1880,11 +1854,21 @@ export declare const StudentsGroupApiFp: (configuration?: Configuration) => {
 export declare const StudentsGroupApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Retrieves all students groups
+     * @summary Deletes all groups
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiStudentsGroupGet(options?: any): AxiosPromise<Array<StudentsGroupForReadDto>>;
+    apiStudentsGroupDelete(options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Retrieves a list of students groups.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiStudentsGroupGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<Array<StudentsGroupForReadDto>>;
     /**
      *
      * @summary Deletes a students group
@@ -1913,11 +1897,11 @@ export declare const StudentsGroupApiFactory: (configuration?: Configuration, ba
     /**
      *
      * @summary Creates a new students group
-     * @param {string} [body] The students group name
+     * @param {StudentsGroupForWriteDto} [studentsGroupForWriteDto] The students group name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiStudentsGroupPost(body?: string, options?: any): AxiosPromise<StudentsGroupForReadDto>;
+    apiStudentsGroupPost(studentsGroupForWriteDto?: StudentsGroupForWriteDto, options?: any): AxiosPromise<StudentsGroupForReadDto>;
 };
 /**
  * StudentsGroupApi - object-oriented interface
@@ -1928,12 +1912,23 @@ export declare const StudentsGroupApiFactory: (configuration?: Configuration, ba
 export declare class StudentsGroupApi extends BaseAPI {
     /**
      *
-     * @summary Retrieves all students groups
+     * @summary Deletes all groups
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StudentsGroupApi
      */
-    apiStudentsGroupGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<StudentsGroupForReadDto[], any>>;
+    apiStudentsGroupDelete(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Retrieves a list of students groups.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof StudentsGroupApi
+     */
+    apiStudentsGroupGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<StudentsGroupForReadDto[], any>>;
     /**
      *
      * @summary Deletes a students group
@@ -1965,12 +1960,12 @@ export declare class StudentsGroupApi extends BaseAPI {
     /**
      *
      * @summary Creates a new students group
-     * @param {string} [body] The students group name
+     * @param {StudentsGroupForWriteDto} [studentsGroupForWriteDto] The students group name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StudentsGroupApi
      */
-    apiStudentsGroupPost(body?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<StudentsGroupForReadDto, any>>;
+    apiStudentsGroupPost(studentsGroupForWriteDto?: StudentsGroupForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<StudentsGroupForReadDto, any>>;
 }
 /**
  * SubjectApi - axios parameter creator
@@ -1980,10 +1975,13 @@ export declare const SubjectApiAxiosParamCreator: (configuration?: Configuration
     /**
      *
      * @summary Retrieves all subjects
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSubjectGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiSubjectGet: (range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Deletes a subject
@@ -2004,19 +2002,19 @@ export declare const SubjectApiAxiosParamCreator: (configuration?: Configuration
      *
      * @summary Updates an existing subject
      * @param {number} id The ID of the subject to update
-     * @param {string} [body] The updated subject name
+     * @param {Subject} [subject] The updated subject
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSubjectIdPut: (id: number, body?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiSubjectIdPut: (id: number, subject?: Subject, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Creates a new subject
-     * @param {string} [body] The subject name
+     * @param {Subject} [subject] The subject to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSubjectPost: (body?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiSubjectPost: (subject?: Subject, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * SubjectApi - functional programming interface
@@ -2026,10 +2024,13 @@ export declare const SubjectApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Retrieves all subjects
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSubjectGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Subject>>>;
+    apiSubjectGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Subject>>>;
     /**
      *
      * @summary Deletes a subject
@@ -2050,19 +2051,19 @@ export declare const SubjectApiFp: (configuration?: Configuration) => {
      *
      * @summary Updates an existing subject
      * @param {number} id The ID of the subject to update
-     * @param {string} [body] The updated subject name
+     * @param {Subject} [subject] The updated subject
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSubjectIdPut(id: number, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    apiSubjectIdPut(id: number, subject?: Subject, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Creates a new subject
-     * @param {string} [body] The subject name
+     * @param {Subject} [subject] The subject to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSubjectPost(body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Subject>>;
+    apiSubjectPost(subject?: Subject, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Subject>>;
 };
 /**
  * SubjectApi - factory interface
@@ -2072,10 +2073,13 @@ export declare const SubjectApiFactory: (configuration?: Configuration, basePath
     /**
      *
      * @summary Retrieves all subjects
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSubjectGet(options?: any): AxiosPromise<Array<Subject>>;
+    apiSubjectGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<Array<Subject>>;
     /**
      *
      * @summary Deletes a subject
@@ -2096,19 +2100,19 @@ export declare const SubjectApiFactory: (configuration?: Configuration, basePath
      *
      * @summary Updates an existing subject
      * @param {number} id The ID of the subject to update
-     * @param {string} [body] The updated subject name
+     * @param {Subject} [subject] The updated subject
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSubjectIdPut(id: number, body?: string, options?: any): AxiosPromise<void>;
+    apiSubjectIdPut(id: number, subject?: Subject, options?: any): AxiosPromise<void>;
     /**
      *
      * @summary Creates a new subject
-     * @param {string} [body] The subject name
+     * @param {Subject} [subject] The subject to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiSubjectPost(body?: string, options?: any): AxiosPromise<Subject>;
+    apiSubjectPost(subject?: Subject, options?: any): AxiosPromise<Subject>;
 };
 /**
  * SubjectApi - object-oriented interface
@@ -2120,11 +2124,14 @@ export declare class SubjectApi extends BaseAPI {
     /**
      *
      * @summary Retrieves all subjects
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SubjectApi
      */
-    apiSubjectGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Subject[], any>>;
+    apiSubjectGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Subject[], any>>;
     /**
      *
      * @summary Deletes a subject
@@ -2147,21 +2154,21 @@ export declare class SubjectApi extends BaseAPI {
      *
      * @summary Updates an existing subject
      * @param {number} id The ID of the subject to update
-     * @param {string} [body] The updated subject name
+     * @param {Subject} [subject] The updated subject
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SubjectApi
      */
-    apiSubjectIdPut(id: number, body?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    apiSubjectIdPut(id: number, subject?: Subject, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Creates a new subject
-     * @param {string} [body] The subject name
+     * @param {Subject} [subject] The subject to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SubjectApi
      */
-    apiSubjectPost(body?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Subject, any>>;
+    apiSubjectPost(subject?: Subject, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Subject, any>>;
 }
 /**
  * TeacherApi - axios parameter creator
@@ -2170,11 +2177,21 @@ export declare class SubjectApi extends BaseAPI {
 export declare const TeacherApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Retrieves all teachers
+     * @summary Deletes all teachers
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiTeacherGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    apiTeacherDelete: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Retrieves a list of teachers.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherGet: (range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Deletes a teacher
@@ -2216,11 +2233,21 @@ export declare const TeacherApiAxiosParamCreator: (configuration?: Configuration
 export declare const TeacherApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Retrieves all teachers
+     * @summary Deletes all teachers
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiTeacherGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Teacher>>>;
+    apiTeacherDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Retrieves a list of teachers.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TeacherForReadDto>>>;
     /**
      *
      * @summary Deletes a teacher
@@ -2262,11 +2289,21 @@ export declare const TeacherApiFp: (configuration?: Configuration) => {
 export declare const TeacherApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Retrieves all teachers
+     * @summary Deletes all teachers
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiTeacherGet(options?: any): AxiosPromise<Array<Teacher>>;
+    apiTeacherDelete(options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Retrieves a list of teachers.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherGet(range?: string, sort?: string, filter?: string, options?: any): AxiosPromise<Array<TeacherForReadDto>>;
     /**
      *
      * @summary Deletes a teacher
@@ -2310,12 +2347,23 @@ export declare const TeacherApiFactory: (configuration?: Configuration, basePath
 export declare class TeacherApi extends BaseAPI {
     /**
      *
-     * @summary Retrieves all teachers
+     * @summary Deletes all teachers
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TeacherApi
      */
-    apiTeacherGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Teacher[], any>>;
+    apiTeacherDelete(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Retrieves a list of teachers.
+     * @param {string} [range]
+     * @param {string} [sort]
+     * @param {string} [filter]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherApi
+     */
+    apiTeacherGet(range?: string, sort?: string, filter?: string, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<TeacherForReadDto[], any>>;
     /**
      *
      * @summary Deletes a teacher
@@ -2353,4 +2401,224 @@ export declare class TeacherApi extends BaseAPI {
      * @memberof TeacherApi
      */
     apiTeacherPost(teacherForWriteDto?: TeacherForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Teacher, any>>;
+}
+/**
+ * TeacherDepartmentApi - axios parameter creator
+ * @export
+ */
+export declare const TeacherDepartmentApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Deletes all department
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentDelete: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Retrieves all departments
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentGet: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Deletes a department
+     * @param {number} id The ID of the department to delete
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentIdDelete: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Retrieves a department by its ID
+     * @param {number} id Department ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentIdGet: (id: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Updates an existing department
+     * @param {number} id The ID of the department to update
+     * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The updated department data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentIdPut: (id: number, teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Creates a new department
+     * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The department data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentPost: (teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * TeacherDepartmentApi - functional programming interface
+ * @export
+ */
+export declare const TeacherDepartmentApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Deletes all department
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentDelete(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Retrieves all departments
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Department>>>;
+    /**
+     *
+     * @summary Deletes a department
+     * @param {number} id The ID of the department to delete
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Retrieves a department by its ID
+     * @param {number} id Department ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Department>>;
+    /**
+     *
+     * @summary Updates an existing department
+     * @param {number} id The ID of the department to update
+     * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The updated department data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentIdPut(id: number, teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Creates a new department
+     * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The department data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentPost(teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Department>>;
+};
+/**
+ * TeacherDepartmentApi - factory interface
+ * @export
+ */
+export declare const TeacherDepartmentApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Deletes all department
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentDelete(options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Retrieves all departments
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentGet(options?: any): AxiosPromise<Array<Department>>;
+    /**
+     *
+     * @summary Deletes a department
+     * @param {number} id The ID of the department to delete
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentIdDelete(id: number, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Retrieves a department by its ID
+     * @param {number} id Department ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentIdGet(id: number, options?: any): AxiosPromise<Department>;
+    /**
+     *
+     * @summary Updates an existing department
+     * @param {number} id The ID of the department to update
+     * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The updated department data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentIdPut(id: number, teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: any): AxiosPromise<void>;
+    /**
+     *
+     * @summary Creates a new department
+     * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The department data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    apiTeacherDepartmentPost(teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: any): AxiosPromise<Department>;
+};
+/**
+ * TeacherDepartmentApi - object-oriented interface
+ * @export
+ * @class TeacherDepartmentApi
+ * @extends {BaseAPI}
+ */
+export declare class TeacherDepartmentApi extends BaseAPI {
+    /**
+     *
+     * @summary Deletes all department
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    apiTeacherDepartmentDelete(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Retrieves all departments
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    apiTeacherDepartmentGet(options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Department[], any>>;
+    /**
+     *
+     * @summary Deletes a department
+     * @param {number} id The ID of the department to delete
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    apiTeacherDepartmentIdDelete(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Retrieves a department by its ID
+     * @param {number} id Department ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    apiTeacherDepartmentIdGet(id: number, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Department, any>>;
+    /**
+     *
+     * @summary Updates an existing department
+     * @param {number} id The ID of the department to update
+     * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The updated department data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    apiTeacherDepartmentIdPut(id: number, teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Creates a new department
+     * @param {TeacherDepartmentForWriteDto} [teacherDepartmentForWriteDto] The department data
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TeacherDepartmentApi
+     */
+    apiTeacherDepartmentPost(teacherDepartmentForWriteDto?: TeacherDepartmentForWriteDto, options?: AxiosRequestConfig): Promise<import("axios").AxiosResponse<Department, any>>;
 }
